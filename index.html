@@ -146,6 +146,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .card-img{margin:-18px -17px 14px;width:calc(100% + 34px);height:155px;border-radius:18px 18px 0 0;overflow:hidden;background:#0b1726;flex-shrink:0}
 .card-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;opacity:0;transition:opacity 0.35s ease}
 .nc.has-img{padding-top:0;border-top:none}
+.nc.has-img::before,.nc.has-img::after{display:none}
 @media(max-width:380px){.card-img{height:130px}}
 .nc.c0::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(79,142,247,0.25) 20%,rgba(15,244,198,0.75) 50%,rgba(79,142,247,0.25) 80%,transparent 100%);border-radius:18px 18px 0 0;z-index:4;pointer-events:none}
 .nc.c0::after{content:'';position:absolute;top:0;left:0;right:0;height:55px;background:linear-gradient(180deg,rgba(15,244,198,0.04) 0%,transparent 100%);border-radius:18px 18px 0 0;pointer-events:none}
@@ -318,86 +319,36 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .cc-new-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}
 
 /* ── READER ── */
-.reader{display:none;flex-direction:column;flex:1;min-height:0}.reader.on{display:flex}
+.reader{display:none;flex-direction:column;flex:1;min-height:0;background:var(--dark)}
+.reader.on{display:flex}
+/* Header */
 .rdr-hdr{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:0.5px solid var(--border);background:var(--navy);flex-shrink:0}
-.rdr-back{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 12px;font-size:12px;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif}
-.rdr-dom{font-size:12px;color:var(--muted);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.rdr-open{background:var(--blue);border:none;border-radius:8px;padding:7px 13px;font-size:12px;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500}
-.rdr-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px;text-align:center;gap:14px}
-.rdr-badge{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(79,142,247,0.12);color:var(--blue)}
-.rdr-hl{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.3;color:#fff;max-width:300px}
-.rdr-note{font-size:12.5px;color:var(--muted);line-height:1.7;max-width:280px}.rdr-note span{color:var(--teal)}
-.rdr-cta{background:var(--blue);border:none;border-radius:12px;padding:13px 32px;font-size:14px;font-weight:600;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif}
-.rdr-sub{font-size:10px;color:rgba(255,179,71,0.6)}
-
-/* ── SOURCES PANEL ── */
-.sp-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:200;align-items:flex-end;justify-content:center}
-.sp-overlay.on{display:flex}
-.sp-sheet{background:#0e1420;width:100%;max-width:420px;border-radius:20px 20px 0 0;max-height:82vh;display:flex;flex-direction:column;overflow:hidden}
-.sp-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:0.5px solid var(--border);background:var(--navy);flex-shrink:0}
-.sp-t{font-size:15px;font-weight:600;color:#fff}
-.sp-body{flex:1;overflow-y:auto;padding:14px 18px 28px}
-.sp-sec{margin-bottom:18px}
-.sp-sec-t{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);font-weight:700;margin-bottom:9px}
-.sp-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:rgba(255,255,255,0.03);border-radius:8px;margin-bottom:5px;border:0.5px solid rgba(255,255,255,0.05)}
-.sp-n{font-size:13px;font-weight:500;color:#fff}.sp-c{font-size:10px;color:var(--muted);margin-top:2px}
-.sp-cats{display:flex;gap:4px;flex-wrap:wrap}
-.sp-cat{padding:2px 7px;border-radius:5px;font-size:9px;font-weight:600;background:rgba(79,142,247,0.1);color:var(--blue)}
-.sp-note{padding:12px 14px;background:rgba(15,244,198,0.04);border-radius:10px;border:0.5px solid rgba(15,244,198,0.12);margin-top:4px}
-.sp-note-t{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--teal);font-weight:700;margin-bottom:4px}
-.sp-note-b{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6}
-
-/* Toast */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(30,37,53,0.96);border:1px solid var(--blue-border);border-radius:10px;padding:9px 18px;font-size:13px;color:#fff;z-index:300;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap}
-
-/* ── INSTALL PROMPTS ── */
-.install-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:400;align-items:flex-end;justify-content:center}
-.install-overlay.on{display:flex}
-.install-sheet{background:#1a1f2e;width:100%;max-width:420px;border-radius:22px 22px 0 0;padding:28px 24px 36px;border-top:1px solid rgba(79,142,247,0.2)}
-.install-icon{width:56px;height:56px;background:rgba(79,142,247,0.12);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:26px}
-.install-title{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:8px;line-height:1.25}
-.install-sub{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:20px}
-.install-benefits{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.install-benefit{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.75)}
-.install-benefit-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
-.install-cta{width:100%;padding:14px;border-radius:13px;background:var(--blue);border:none;font-size:15px;font-weight:600;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;margin-bottom:12px}
-.install-cta:hover{background:#3d7ef6}
-.install-skip{display:block;text-align:center;font-size:12px;color:rgba(255,255,255,0.35);cursor:pointer;padding:4px;font-family:'DM Sans',sans-serif;background:none;border:none;width:100%}
-.install-skip:hover{color:rgba(255,255,255,0.6)}
-
-/* iOS steps */
-.ios-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
-.ios-step{display:flex;align-items:flex-start;gap:12px}
-.ios-step-num{width:24px;height:24px;border-radius:50%;background:rgba(79,142,247,0.15);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;margin-top:1px}
-.ios-step-text{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.5;flex:1}
-.ios-step-text strong{color:#fff;font-weight:600}
-
-/* ── QUICK ONBOARDING (TabFin users, 1 screen) ── */
-.quick-ob-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding:28px 22px}
-.quick-ob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(15,244,198,0.1);border:1px solid rgba(15,244,198,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--teal);font-weight:500;margin-bottom:16px}
-.quick-ob-title{font-family:'DM Serif Display',serif;font-size:26px;color:#fff;margin-bottom:8px;line-height:1.25}
-.quick-ob-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:28px}
-
-/* ── WELCOME BANNER (TabFin users arriving with params) ── */
-.welcome-banner{background:rgba(15,244,198,0.06);border:1px solid rgba(15,244,198,0.15);border-radius:12px;padding:12px 14px;margin:8px 14px 0;display:flex;align-items:center;gap:10px;flex-shrink:0}
-.welcome-banner.hidden{display:none}
-.wb-text{flex:1;font-size:12px;color:rgba(255,255,255,0.7);line-height:1.5}
-.wb-text strong{color:#fff;font-weight:600;display:block;margin-bottom:2px}
-.wb-dismiss{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.3);font-size:18px;padding:0 2px;line-height:1}
-.wb-dismiss:hover{color:rgba(255,255,255,0.7)}
-
-/* ── IN-APP READER IFRAME ── */
-.reader-iframe-wrap{flex:1;display:flex;flex-direction:column;min-height:0}
-.reader-iframe{flex:1;border:none;width:100%;background:#fff}
-.reader-blocked-msg{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:14px}
-.reader-blocked-icon{font-size:32px}
-.reader-blocked-title{font-size:16px;font-weight:600;color:#fff}
-.reader-blocked-sub{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:260px}
-.reader-open-ext{background:var(--blue);border:none;border-radius:12px;padding:13px 28px;font-size:14px;font-weight:600;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif}
-.reader-loading{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
-.reader-loading-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:ldot 1.2s ease-in-out infinite}
-.reader-loading-dot:nth-child(2){animation-delay:0.2s}
-.reader-loading-dot:nth-child(3){animation-delay:0.4s}
+.rdr-back{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 12px;font-size:12px;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.rdr-dom{font-size:12px;color:var(--muted);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center}
+.rdr-share-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 10px;color:#fff;cursor:pointer;display:flex;align-items:center}
+/* State 1: Loading */
+.rdr-loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.rdr-loading-brand{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
+.rdr-loading-tab{color:#fff}
+.rdr-loading-news{color:var(--teal)}
+.rdr-loading-text{font-size:13px;color:var(--muted);font-family:'DM Sans',sans-serif}
+.rdr-loading-pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:rdrpulse 1.2s ease-in-out infinite}
+@keyframes rdrpulse{0%,100%{opacity:0.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+/* State 2: Iframe */
+.rdr-iframe-wrap{flex:1;display:flex;flex-direction:column;min-height:0}
+.rdr-iframe{flex:1;border:none;width:100%;background:#fff}
+/* State 3: Fallback */
+.rdr-fallback{flex:1;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rdr-fb-img-wrap{width:100%;height:180px;overflow:hidden;flex-shrink:0;background:#0b1726}
+.rdr-fb-img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.rdr-fb-body{padding:20px 20px 32px;display:flex;flex-direction:column;gap:14px}
+.rdr-fb-meta{display:flex;align-items:center;gap:10px}
+.rdr-fb-time{font-size:11px;color:var(--muted)}
+.rdr-fb-hl{font-family:'DM Serif Display',serif;font-size:19px;line-height:1.35;color:#f8faff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rdr-fb-divider{height:0.5px;background:var(--border);margin:2px 0}
+.rdr-fb-insight{font-size:13px;color:rgba(210,225,255,0.75);line-height:1.6;font-style:italic}
+.rdr-fb-btn{background:var(--teal);border:none;border-radius:12px;padding:14px 24px;font-size:14px;font-weight:600;color:#0a0f1a;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;margin-top:4px}
+.rdr-fb-sub{font-size:10px;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.5px}
 @keyframes ldot{0%,80%,100%{opacity:0.2;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}
 .toast.show{opacity:1}
 </style>
@@ -626,25 +577,42 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 
 <!-- ═══ READER ═══ -->
 <div id="reader" class="reader">
+  <!-- Header — always visible -->
   <div class="rdr-hdr">
-    <button class="rdr-back" onclick="closeReader()">← Back</button>
+    <button class="rdr-back" onclick="closeReader()">← Feed</button>
     <div class="rdr-dom" id="rdr-dom"></div>
-    <button class="rdr-open" onclick="openExt()">Open ↗</button>
+    <button class="rdr-share-btn" id="rdr-share-btn" onclick="rdrShare()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="2.5" r="1.2"/><circle cx="11" cy="11.5" r="1.2"/><circle cx="3" cy="7" r="1.2"/><line x1="9.8" y1="3.1" x2="4.2" y2="6.4"/><line x1="9.8" y1="10.9" x2="4.2" y2="7.6"/></svg>
+    </button>
   </div>
-  <div class="reader-loading" id="rdr-loading">
-    <div class="reader-loading-dot"></div>
-    <div class="reader-loading-dot"></div>
-    <div class="reader-loading-dot"></div>
+  <!-- State 1: Loading -->
+  <div class="rdr-loading" id="rdr-loading">
+    <div class="rdr-loading-brand">
+      <span class="rdr-loading-tab">Tab</span><span class="rdr-loading-news">News</span>
+    </div>
+    <div class="rdr-loading-text">Fetching story...</div>
+    <div class="rdr-loading-pulse"></div>
   </div>
-  <div class="reader-iframe-wrap" id="rdr-iframe-wrap" style="display:none">
-    <iframe class="reader-iframe" id="rdr-iframe" sandbox="allow-scripts allow-popups allow-forms" title="Article reader"></iframe>
+  <!-- State 2: Iframe success -->
+  <div class="rdr-iframe-wrap" id="rdr-iframe-wrap" style="display:none">
+    <iframe class="rdr-iframe" id="rdr-iframe" sandbox="allow-scripts allow-popups allow-forms allow-same-origin" title="Article reader"></iframe>
   </div>
-  <div class="reader-blocked-msg" id="rdr-blocked" style="display:none">
-    <div class="reader-blocked-icon">🔒</div>
-    <div class="reader-blocked-title" id="rdr-hl"></div>
-    <div class="reader-blocked-sub">This source doesn't allow in-app reading. Tap below to open the full story in your browser.</div>
-    <button class="reader-open-ext" onclick="openExt()">Read full story ↗</button>
-    <div class="rdr-sub" style="margin-top:8px">Original source · Commercial RSS permitted</div>
+  <!-- State 3: Blocked fallback -->
+  <div class="rdr-fallback" id="rdr-fallback" style="display:none">
+    <div class="rdr-fb-img-wrap" id="rdr-fb-img-wrap" style="display:none">
+      <img class="rdr-fb-img" id="rdr-fb-img" src="" alt=""/>
+    </div>
+    <div class="rdr-fb-body">
+      <div class="rdr-fb-meta">
+        <span class="ctag" id="rdr-fb-chip"></span>
+        <span class="rdr-fb-time" id="rdr-fb-time"></span>
+      </div>
+      <div class="rdr-fb-hl" id="rdr-fb-hl"></div>
+      <div class="rdr-fb-divider"></div>
+      <div class="rdr-fb-insight" id="rdr-fb-insight"></div>
+      <button class="rdr-fb-btn" id="rdr-fb-btn" onclick="rdrOpenExternal()">Read on <span id="rdr-fb-src"></span> →</button>
+      <div class="rdr-fb-sub">opens in browser</div>
+    </div>
   </div>
 </div>
 
@@ -1653,7 +1621,9 @@ function toggleFollow(e, id) {
 // Domains known to block iframes — will always open externally
 var IFRAME_BLOCKED = ['bbc.com','bbc.co.uk','apnews.com','reuters.com',
   'bloomberg.com','wsj.com','ft.com','nytimes.com','theguardian.com',
-  'wired.com','theverge.com','mashable.com','espn.com','thehindu.com'];
+  'wired.com','theverge.com','mashable.com','espn.com','thehindu.com',
+  'ndtv.com','cnbc.com','timesofindia.indiatimes.com','gulfbusiness.com',
+  'marketwatch.com','indiatimes.com'];
 
 function isIframeBlocked(url) {
   return IFRAME_BLOCKED.some(function(d){ return url.indexOf(d) > -1; });
@@ -1665,71 +1635,122 @@ function openReader(id) {
   rdrUrl = story.url;
   rdrPrev = activeView;
 
-  // Option A: known blockers — navigate directly, no lock screen friction
-  if(isIframeBlocked(story.url)) {
-    window.open(story.url, '_blank');
-    return;
-  }
+  // Set header domain
+  var domain = story.url.replace('https://','').replace('http://','').split('/')[0];
+  document.getElementById('rdr-dom').textContent = domain;
 
-  // Set up reader UI
-  document.getElementById('rdr-dom').textContent = story.url.replace('https://','');
-  if(document.getElementById('rdr-hl')) {
-    document.getElementById('rdr-hl').textContent = story.h;
-  }
+  // Show loading state
   document.getElementById('rdr-loading').style.display = 'flex';
   document.getElementById('rdr-iframe-wrap').style.display = 'none';
-  document.getElementById('rdr-blocked').style.display = 'none';
+  document.getElementById('rdr-fallback').style.display = 'none';
+
+  // Show reader screen
   document.getElementById('shell').classList.remove('on');
   document.getElementById('reader').classList.add('on');
+
+  // For known blockers — skip iframe, show fallback immediately
+  if(isIframeBlocked(story.url)) {
+    document.getElementById('rdr-loading').style.display = 'none';
+    showRdrFallback(story);
+    return;
+  }
 
   // Try iframe
   var iframe = document.getElementById('rdr-iframe');
   var loaded = false;
+
   var fallbackTimer = setTimeout(function(){
     if(!loaded) {
-      // timed out — navigate directly, no lock screen
-      document.getElementById('reader').classList.remove('on');
-      document.getElementById('shell').classList.add('on');
-      window.open(rdrUrl, '_blank');
+      document.getElementById('rdr-loading').style.display = 'none';
+      showRdrFallback(story);
     }
-  }, 5000);
+  }, 2000);
 
   iframe.onload = function(){
     loaded = true;
     clearTimeout(fallbackTimer);
     try {
-      // try accessing iframe content — throws if blocked by X-Frame-Options
       var test = iframe.contentWindow.location.href;
       document.getElementById('rdr-loading').style.display = 'none';
       document.getElementById('rdr-iframe-wrap').style.display = 'flex';
     } catch(e) {
-      // cross-origin block detected — navigate directly
       clearTimeout(fallbackTimer);
-      document.getElementById('reader').classList.remove('on');
-      document.getElementById('shell').classList.add('on');
-      window.open(rdrUrl, '_blank');
+      document.getElementById('rdr-loading').style.display = 'none';
+      showRdrFallback(story);
     }
   };
   iframe.onerror = function(){
     clearTimeout(fallbackTimer);
-    document.getElementById('reader').classList.remove('on');
-    document.getElementById('shell').classList.add('on');
-    window.open(rdrUrl, '_blank');
+    document.getElementById('rdr-loading').style.display = 'none';
+    showRdrFallback(story);
   };
   iframe.src = story.url;
 }
 
-function closeReader() {
-  // reset iframe src to stop loading
-  var iframe = document.getElementById('rdr-iframe');
-  if(iframe) iframe.src = 'about:blank';
-  document.getElementById('reader').classList.remove('on');
-  document.getElementById('shell').classList.add('on');
+function showRdrFallback(story) {
+  // Populate fallback state with story data
+  var chip = document.getElementById('rdr-fb-chip');
+  chip.className = 'ctag ' + story.tc;
+  chip.textContent = story.tag;
+
+  document.getElementById('rdr-fb-time').textContent = story.t;
+  document.getElementById('rdr-fb-hl').textContent = story.h;
+  document.getElementById('rdr-fb-src').textContent = story.src;
+
+  var insight = getStoryInsight(story);
+  var insightEl = document.getElementById('rdr-fb-insight');
+  if(insight) {
+    insightEl.textContent = '💡 ' + insight;
+    insightEl.style.display = 'block';
+  } else {
+    insightEl.style.display = 'none';
+  }
+
+  // Image
+  var imgWrap = document.getElementById('rdr-fb-img-wrap');
+  var imgEl = document.getElementById('rdr-fb-img');
+  if(story.img) {
+    imgEl.src = story.img;
+    imgEl.onload = function(){ imgWrap.style.display = 'block'; };
+    imgEl.onerror = function(){ imgWrap.style.display = 'none'; };
+  } else {
+    imgWrap.style.display = 'none';
+  }
+
+  document.getElementById('rdr-fallback').style.display = 'flex';
 }
 
-function openExt() {
+function rdrOpenExternal() {
   if(rdrUrl) window.open(rdrUrl, '_blank');
 }
+
+function rdrShare() {
+  var story = STORIES.find(function(s){ return s.url === rdrUrl; });
+  if(!story) return;
+  if(navigator.share) {
+    navigator.share({ title: story.h, url: story.url }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(story.url).then(function(){
+      showToast('Link copied');
+    }).catch(function(){});
+  }
+}
+
+
+function closeReader() {
+  var iframe = document.getElementById('rdr-iframe');
+  if(iframe) iframe.src = 'about:blank';
+  // Reset all states
+  document.getElementById('rdr-loading').style.display = 'none';
+  document.getElementById('rdr-iframe-wrap').style.display = 'none';
+  document.getElementById('rdr-fallback').style.display = 'none';
+  document.getElementById('rdr-fb-img-wrap').style.display = 'none';
+  document.getElementById('reader').classList.remove('on');
+  document.getElementById('shell').classList.add('on');
+  // feedCur unchanged — user returns to exact same card
+}
+
+// openExt replaced by rdrOpenExternal
 
 // ═══════════════════════════════════════════
 // TRENDING
@@ -4401,7 +4422,9 @@ function getStoryInsight(story) {
 // Domains known to block iframes — will always open externally
 var IFRAME_BLOCKED = ['bbc.com','bbc.co.uk','apnews.com','reuters.com',
   'bloomberg.com','wsj.com','ft.com','nytimes.com','theguardian.com',
-  'wired.com','theverge.com','mashable.com','espn.com','thehindu.com'];
+  'wired.com','theverge.com','mashable.com','espn.com','thehindu.com',
+  'ndtv.com','cnbc.com','timesofindia.indiatimes.com','gulfbusiness.com',
+  'marketwatch.com','indiatimes.com'];
 
 
 
