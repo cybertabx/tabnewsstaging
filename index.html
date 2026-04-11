@@ -19,7 +19,7 @@
   --border:rgba(255,255,255,0.06);--blue-border:rgba(79,142,247,0.2)
 }
 body{background:#030710;display:flex;justify-content:center;min-height:100vh;padding:16px;font-family:'DM Sans',sans-serif;color:#fff}
-#app{background:var(--dark);width:100%;max-width:420px;min-height:calc(100vh - 32px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;border-radius:20px;overflow:hidden;position:relative}
+#app{background:var(--dark);width:100%;max-width:420px;min-height:calc(100vh - 32px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;border-radius:20px;overflow:hidden;position:relative;opacity:0;transition:opacity 0.15s}
 @media(max-width:480px){body{padding:0;background:var(--dark)}#app{border-radius:0;min-height:100vh;min-height:100dvh;max-height:100dvh;max-height:100vh}}
 
 /* ── SCREENS ── */
@@ -279,7 +279,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 
 /* ── BOTTOM NAV ── */
 .bottom-nav{display:flex;background:var(--navy);border-top:0.5px solid var(--border);flex-shrink:0}
-.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 12px;cursor:pointer;gap:4px;transition:opacity 0.15s;border:none;background:none;font-family:'DM Sans',sans-serif}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 2px 10px;cursor:pointer;gap:4px;transition:opacity 0.15s;border:none;background:none;font-family:'DM Sans',sans-serif}
 .bnav-item:active{opacity:0.7}
 .bnav-icon{width:22px;height:22px;display:flex;align-items:center;justify-content:center;position:relative}
 .bnav-label{font-size:10px;color:rgba(255,255,255,0.35);font-weight:500;transition:color 0.2s}
@@ -434,7 +434,50 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .rdr-fb-insight{font-size:13px;color:rgba(210,225,255,0.75);line-height:1.6;font-style:italic}
 .rdr-fb-btn{background:var(--teal);border:none;border-radius:12px;padding:14px 24px;font-size:14px;font-weight:600;color:#0a0f1a;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;margin-top:4px}
 .rdr-fb-sub{font-size:10px;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.5px}
+
+/* ── Digest view ── */
+.rdr-digest{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rdr-digest-inner{padding:0 0 32px}
+.rdr-ds{border-bottom:0.5px solid var(--border)}
+.rdr-ds:last-child{border-bottom:none}
+.rdr-ds-img-wrap{width:100%;height:160px;overflow:hidden;background:#0b1726;flex-shrink:0}
+.rdr-ds-img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.rdr-ds-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:12px}
+.rdr-ds-meta{display:flex;align-items:center;gap:8px}
+.rdr-ds-src{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.rdr-ds-time{font-size:10px;color:rgba(255,255,255,0.25)}
+.rdr-ds-hl{font-family:'DM Serif Display',serif;font-size:18px;line-height:1.35;color:#f8faff}
+.rdr-ds-body-txt{font-size:13px;color:rgba(210,225,255,0.75);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rdr-ds-insight{font-size:12px;color:rgba(15,244,198,0.8);line-height:1.55;font-style:italic;padding:8px 12px;background:rgba(15,244,198,0.05);border-left:2px solid rgba(15,244,198,0.3);border-radius:0 7px 7px 0}
+.rdr-ds-actions{display:flex;align-items:center;gap:10px}
+.rdr-ds-btn{flex:1;background:var(--teal);border:none;border-radius:10px;padding:12px;font-size:13px;font-weight:600;color:#0a0f1a;cursor:pointer;font-family:'DM Sans',sans-serif}
+.rdr-ds-save{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.rdr-ds-save:hover,.rdr-ds-save.sv{color:var(--teal);border-color:rgba(15,244,198,0.3)}
+.rdr-ds-share{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;font-family:'DM Sans',sans-serif}
+.rdr-ds-minimal{padding:20px 18px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+.rdr-ds-minimal-domain{font-size:14px;color:rgba(255,255,255,0.5)}
+.rdr-ds-minimal-btn{width:100%;background:var(--teal);border:none;border-radius:10px;padding:13px;font-size:13px;font-weight:600;color:#0a0f1a;cursor:pointer;font-family:'DM Sans',sans-serif}
+.rdr-digest-header{padding:14px 18px 12px;border-bottom:0.5px solid var(--border);background:var(--navy);flex-shrink:0;display:none}
+.rdr-digest-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal)}
+.rdr-digest-date{font-size:10px;color:var(--muted);margin-top:2px}
 </style>
+<!-- Eruda mobile console — TESTING ONLY, remove before launch -->
+<script>
+function toggleEruda() {
+  if(typeof eruda !== 'undefined' && eruda._isInit) {
+    eruda.hide();
+  } else if(typeof eruda !== 'undefined') {
+    eruda.init();
+  } else {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/eruda';
+    s.onload = function(){ eruda.init(); };
+    document.head.appendChild(s);
+  }
+}
+</script>
+<!-- OneSignal Push Notifications -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
 <body>
 <div id="app">
@@ -641,20 +684,19 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
       <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,13 6,8 9,10 13,5 16,7"/><polyline points="13,5 16,5 16,8"/></svg></div>
       <span class="bnav-label">Trending</span>
     </button>
+    <button class="bnav-item" id="bn-tabspace" onclick="bnav('tabspace')" title="TabSpace">
+      <div class="bnav-icon" style="width:22px;height:22px"><svg width="22" height="22" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="96" height="96" rx="22" fill="#1a1a2e"/><rect x="10" y="10" width="76" height="76" rx="16" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-opacity="0.4"/><rect x="20" y="20" width="56" height="56" rx="12" fill="none" stroke="url(#ts-grad-bnav)" stroke-width="5"/><circle cx="48" cy="48" r="7" fill="#0ff4c6"/><defs><linearGradient id="ts-grad-bnav" x1="10" y1="10" x2="86" y2="86" gradientUnits="userSpaceOnUse"><stop stop-color="#4f8ef7"/><stop offset="1" stop-color="#0ff4c6"/></linearGradient></defs></svg></div>
+      <span class="bnav-label">TabSpace</span>
+    </button>
+    <button class="bnav-item" id="bn-sports" onclick="bnav('sports')">
+      <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 2 C9 2 6 5 6 9 C6 13 9 16 9 16"/><path d="M9 2 C9 2 12 5 12 9 C12 13 9 16 9 16"/><line x1="2" y1="9" x2="16" y2="9"/></svg></div>
+      <span class="bnav-label">Sports</span>
+    </button>
     <button class="bnav-item" id="bn-saved" onclick="bnav('saved')">
       <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h12v13l-6-3.5L3 16V3z"/></svg></div>
       <span class="bnav-label">Saved</span>
     </button>
-    <button class="bnav-item tabfin-nav" onclick="openTabFin()">
-      <div class="bnav-icon">
-        <div class="tn-bars" style="gap:2px">
-          <div class="tn-bar" style="width:16px;background:rgba(15,244,198,0.5)"></div>
-          <div class="tn-bar" style="width:11px;background:rgba(15,244,198,0.5)"></div>
-          <div class="tn-bar" style="width:7px;background:rgba(15,244,198,0.5)"></div>
-        </div>
-      </div>
-      <span class="bnav-label">TabFin</span>
-    </button>
+
   </div>
 </div>
 
@@ -695,6 +737,12 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
       <div class="rdr-fb-insight" id="rdr-fb-insight"></div>
       <button class="rdr-fb-btn" id="rdr-fb-btn" onclick="rdrOpenExternal()">Read on <span id="rdr-fb-src"></span> →</button>
       <div class="rdr-fb-sub">opens in browser</div>
+    </div>
+  </div>
+  <!-- State 4: Digest view -->
+  <div class="rdr-digest" id="rdr-digest" style="display:none">
+    <div class="rdr-digest-inner" id="rdr-digest-inner">
+      <!-- Stories injected dynamically by showDigestView() -->
     </div>
   </div>
 </div>
@@ -1080,6 +1128,10 @@ function obNext() {
     saveProfile();
     launchApp();
     showInstallPromptIfNeeded();
+    // Show OneSignal prompt after onboarding — "Recommended for better experience"
+    setTimeout(function(){
+      showOSPrompt();
+    }, 2000);
   }
 }
 
@@ -1126,6 +1178,8 @@ function launchApp() {
       if(source === 'live' && count) {
         showToast(count + ' fresh stories loaded');
       }
+      // Consume any pending deep link now that real stories are loaded
+      consumePendingDeepLink();
     }
   });
   // fetch real ticker prices in background — updates demo prices silently
@@ -1140,7 +1194,33 @@ function launchApp() {
     // silent — ticker already updated by fetchTickerPrices internally
   });
   showInstallPromptIfNeeded();
+  // Init OneSignal (no prompt yet — prompt shown after onboarding)
+  initOneSignal();
+  // Check for deep link story
+  checkDeepLink();
+  // Reveal app — prevents flash of wrong screen before JS init
+  document.getElementById('app').style.opacity = '1';
 }
+
+// ── Background resume handler ──
+// When iOS resumes PWA from background, URL may have changed (notification tap)
+// Page doesn't reload — must re-check URL params on visibility change
+(function(){
+  var lastUrl = window.location.href;
+  document.addEventListener('visibilitychange', function() {
+    if(document.visibilityState === 'visible') {
+      var currentUrl = window.location.href;
+      // Only act if URL has changed since last check
+      if(currentUrl !== lastUrl) {
+        lastUrl = currentUrl;
+        // Re-read deep link params with fresh URL
+        checkDeepLink();
+        // Consume immediately — RSS already loaded
+        setTimeout(function(){ consumePendingDeepLink(); }, 300);
+      }
+    }
+  });
+})();
 
 function updateBreakingBanner() {
   if(bbDismissed) return;
@@ -1180,7 +1260,22 @@ function switchView(v) {
 }
 
 function bnav(v) {
-  ['feed','trending','saved'].forEach(function(name){
+  // TabSpace is a launcher — navigates away, never activates a view
+  if(v === 'tabspace') {
+    window.location.href = 'https://apps.cybertabx.com';
+    return;
+  }
+  // Sports — coming soon
+  if(v === 'sports') {
+    ['feed','trending','saved','sports'].forEach(function(name){
+      var el = document.getElementById('bn-'+name);
+      if(el) el.classList.toggle('on', name==='sports');
+    });
+    showToast('Sports coming soon 🏏');
+    return;
+  }
+  // Feed / Trending / Saved
+  ['feed','trending','saved','sports'].forEach(function(name){
     var el = document.getElementById('bn-'+name);
     if(el) el.classList.toggle('on', name===v);
   });
@@ -1516,8 +1611,8 @@ function renderACU(stk) {
   div.className = 'acu';
   div.innerHTML = '<div class="acu-check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
     +'<div class="acu-title">You\'re all caught up</div>'
-    +'<div class="acu-sub">That\'s today\'s news digest.<br>Fresh stories arrive every 6 hours.</div>'
-    +'<div class="acu-refresh">Last updated · '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})+' · Next refresh ~6 hrs · Breaking news notifies immediately</div>'
+    +'<div class="acu-sub">That\'s today\'s news digest.<br>Fresh stories arrive every 2 hours.</div>'
+    +'<div class="acu-refresh">Last updated · '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})+'</div>'
     +'<button class="acu-refresh-btn" id="acu-refresh-btn" onclick="refreshFeed()">'
     +'<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5A5.5 5.5 0 1 1 8.5 1.5"/><polyline points="12,1 12,4 9,4"/></svg>'
     +'Check for new stories</button>'
@@ -1771,14 +1866,202 @@ function rdrShare() {
 }
 
 
+
+// ═══════════════════════════════════════════
+// DIGEST VIEW — shows top 3 stories scrollable
+// Called when notification has ?digest= param
+// ═══════════════════════════════════════════
+function showDigestView(urls) {
+  // Update header
+  document.getElementById('rdr-dom').textContent = 'Morning Digest';
+
+  // Reset all other reader states
+  document.getElementById('rdr-loading').style.display = 'none';
+  document.getElementById('rdr-iframe-wrap').style.display = 'none';
+  document.getElementById('rdr-fallback').style.display = 'none';
+
+  // Show digest state
+  document.getElementById('rdr-digest').style.display = 'flex';
+  document.getElementById('rdr-digest').style.flexDirection = 'column';
+
+  // Show reader, hide shell
+  document.getElementById('shell').classList.remove('on');
+  document.getElementById('reader').classList.add('on');
+
+  // Build digest content
+  var container = document.getElementById('rdr-digest-inner');
+  container.innerHTML = '';
+
+  // Today's date for header
+  var today = new Date().toLocaleDateString('en-AE', { weekday:'long', day:'numeric', month:'long' });
+
+  // Date header
+  var dateHdr = document.createElement('div');
+  dateHdr.style.cssText = 'padding:14px 18px 10px;font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;border-bottom:0.5px solid var(--border)';
+  dateHdr.textContent = today;
+  container.appendChild(dateHdr);
+
+  // Build each story slot
+  urls.forEach(function(url, index) {
+    var story = STORIES.find(function(s){
+      return s.url === url || s.url.indexOf(url) > -1 || url.indexOf(s.url) > -1;
+    });
+
+    var slot = document.createElement('div');
+    slot.className = 'rdr-ds';
+
+    if(story) {
+      // Full story slot — build using DOM not innerHTML to avoid escaping issues
+      var insight = getStoryInsight(story);
+      var isSaved = saved.has(story.id);
+
+      // Image
+      if(story.img) {
+        var imgWrap = document.createElement('div');
+        imgWrap.className = 'rdr-ds-img-wrap';
+        var img = document.createElement('img');
+        img.className = 'rdr-ds-img';
+        img.src = story.img;
+        img.onerror = function(){ imgWrap.style.display = 'none'; };
+        imgWrap.appendChild(img);
+        slot.appendChild(imgWrap);
+      }
+
+      // Body
+      var body = document.createElement('div');
+      body.className = 'rdr-ds-body';
+
+      // Meta
+      var meta = document.createElement('div');
+      meta.className = 'rdr-ds-meta';
+      meta.innerHTML = '<span class="rdr-ds-src">' + (story.src||'') + '</span><span class="rdr-ds-time">' + (story.t||'') + '</span>';
+      body.appendChild(meta);
+
+      // Headline
+      var hl = document.createElement('div');
+      hl.className = 'rdr-ds-hl';
+      hl.textContent = story.h || '';
+      body.appendChild(hl);
+
+      // Body text
+      if(story.b) {
+        var bt = document.createElement('div');
+        bt.className = 'rdr-ds-body-txt';
+        bt.textContent = story.b;
+        body.appendChild(bt);
+      }
+
+      // Insight
+      if(insight) {
+        var ins = document.createElement('div');
+        ins.className = 'rdr-ds-insight';
+        ins.textContent = '💡 ' + insight;
+        body.appendChild(ins);
+      }
+
+      // Actions
+      var actions = document.createElement('div');
+      actions.className = 'rdr-ds-actions';
+
+      var readBtn = document.createElement('button');
+      readBtn.className = 'rdr-ds-btn';
+      readBtn.textContent = 'Read full story →';
+      readBtn.addEventListener('click', (function(sid){ return function(){ digestRead(sid); }; })(story.id));
+      actions.appendChild(readBtn);
+
+      var saveBtn = document.createElement('button');
+      saveBtn.className = 'rdr-ds-save' + (isSaved ? ' sv' : '');
+      saveBtn.textContent = isSaved ? '✓ Saved' : 'Save';
+      saveBtn.addEventListener('click', (function(btn, sid){ return function(){ digestSave(btn, sid); }; })(saveBtn, story.id));
+      actions.appendChild(saveBtn);
+
+      var shareBtn = document.createElement('button');
+      shareBtn.className = 'rdr-ds-share';
+      shareBtn.textContent = 'Share';
+      shareBtn.addEventListener('click', (function(sid){ return function(){ digestShare(sid); }; })(story.id));
+      actions.appendChild(shareBtn);
+
+      body.appendChild(actions);
+      slot.appendChild(body);
+
+    } else {
+      // Minimal slot — story not in feed
+      var domain = url.replace('https://','').replace('http://','').split('/')[0];
+      var minWrap = document.createElement('div');
+      minWrap.className = 'rdr-ds-minimal';
+      var minDomain = document.createElement('div');
+      minDomain.className = 'rdr-ds-minimal-domain';
+      minDomain.textContent = domain;
+      var minBtn = document.createElement('button');
+      minBtn.className = 'rdr-ds-minimal-btn';
+      minBtn.textContent = 'Read on ' + domain + ' →';
+      minBtn.addEventListener('click', (function(u){ return function(){ window.open(u, '_blank'); }; })(url));
+      minWrap.appendChild(minDomain);
+      minWrap.appendChild(minBtn);
+      slot.appendChild(minWrap);
+    }
+
+    container.appendChild(slot);
+
+    // Divider between stories (not after last)
+    if(index < urls.length - 1) {
+      var div = document.createElement('div');
+      div.style.cssText = 'height:8px;background:rgba(0,0,0,0.3)';
+      container.appendChild(div);
+    }
+  });
+}
+
+function digestRead(storyId) {
+  var story = STORIES.find(function(s){ return s.id === storyId; });
+  if(story) window.open(story.url, '_blank');
+}
+
+function digestReadUrl(btn) {
+  var url = decodeURIComponent(btn.getAttribute('data-url'));
+  if(url) window.open(url, '_blank');
+}
+
+function digestShare(storyId) {
+  var story = STORIES.find(function(s){ return s.id === storyId; });
+  if(!story) return;
+  if(navigator.share) {
+    navigator.share({ title: story.h, url: story.url }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(story.url).then(function(){ showToast('Link copied'); }).catch(function(){});
+  }
+}
+
+function digestSave(btn, storyId) {
+  var story = STORIES.find(function(s){ return s.id === storyId; });
+  if(!story) return;
+  if(saved.has(storyId)) {
+    saved.delete(storyId);
+    btn.textContent = 'Save';
+    btn.classList.remove('sv');
+    showToast('Removed from saved');
+  } else {
+    saved.add(storyId);
+    btn.textContent = '✓ Saved';
+    btn.classList.add('sv');
+    showToast('Saved to reading list');
+  }
+  try { localStorage.setItem('tn-saved-v3', JSON.stringify(Array.from(saved))); } catch(e2){}
+}
+
+
+
 function closeReader() {
   var iframe = document.getElementById('rdr-iframe');
   if(iframe) iframe.src = 'about:blank';
-  // Reset all states
+  // Reset all states including digest
   document.getElementById('rdr-loading').style.display = 'none';
   document.getElementById('rdr-iframe-wrap').style.display = 'none';
   document.getElementById('rdr-fallback').style.display = 'none';
   document.getElementById('rdr-fb-img-wrap').style.display = 'none';
+  document.getElementById('rdr-digest').style.display = 'none';
+  document.getElementById('rdr-digest-inner').innerHTML = '';
+  document.getElementById('rdr-dom').textContent = '';
   document.getElementById('reader').classList.remove('on');
   document.getElementById('shell').classList.add('on');
   // feedCur unchanged — user returns to exact same card
@@ -5333,6 +5616,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
 });
 
 function showInstallPromptIfNeeded() {
+  if(isInShell || window.isFromTabSpace) return; // skip when inside or from TabSpace
   if(!shouldShowInstall()) return;
   setTimeout(function(){
     if(isIOS()) {
@@ -5405,6 +5689,8 @@ function quickObSkip() {
   var params = parseURLParams();
   var fromTabFin = params.ref === 'tabfin';
   var hasProfile = !!(P.loc || P.focus.length);
+  // Reveal app immediately — correct screen already set above
+  document.getElementById('app').style.opacity = '1';
 
   // Scenario 2 + 4: returning user with saved profile
   if(hasProfile) {
@@ -5445,17 +5731,12 @@ function quickObSkip() {
 
   // Scenario 1: brand new user, direct visit — full onboarding (already showing sc-ob)
   // sc-ob starts with class="scr on" by default — nothing to do
+
 })();
 
 
-// Register service worker for PWA installability
-if('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').catch(function(e){
-      console.warn('SW registration failed:', e);
-    });
-  });
-}
+// Service worker registered by OneSignal via serviceWorkerPath: 'sw.js'
+// Do not manually register — OneSignal handles SW registration
 
 // ═══════════════════════════════════════════
 // DEBUG — call testTickerFetch() from browser console after deploy
@@ -5516,7 +5797,264 @@ window.testTickerFetch = function() {
   });
 }
 console.log('%c TabNews v3.13 ready. Run testTickerFetch() to test live prices.', 'color:#0ff4c6');
+
+// ═══════════════════════════════════════════
+// SHELL DETECTION
+// ═══════════════════════════════════════════
+var isInShell = (window.top !== window.self);
+
+// ── TabSpace source detection ──
+// Detects if user navigated from TabSpace via ?source=tabspace
+// Persists in sessionStorage for the tab's lifetime
+(function(){
+  var fromTS = new URLSearchParams(window.location.search).get('source') === 'tabspace';
+  if(fromTS) sessionStorage.setItem('from_tabspace', 'true');
+  window.isFromTabSpace = fromTS || sessionStorage.getItem('from_tabspace') === 'true';
+})();
+
+// ═══════════════════════════════════════════
+// ONESIGNAL PUSH NOTIFICATIONS
+// ═══════════════════════════════════════════
+var ONESIGNAL_APP_ID = '0bf90533-37aa-43b1-99c1-9f9bc096ae9c';
+var ONESIGNAL_SAFARI_ID = 'web.onesignal.auto.36762c33-c595-4251-8e66-ea9a822d3713';
+var osInitialized = false;
+
+function initOneSignal() {
+  if(osInitialized || isInShell) return;
+  if(typeof OneSignal === 'undefined' && typeof OneSignalDeferred === 'undefined') return;
+  osInitialized = true;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: ONESIGNAL_APP_ID,
+      safari_web_id: ONESIGNAL_SAFARI_ID,
+      notifyButton: { enable: false },
+      welcomeNotification: { disable: true },
+      autoResubscribe: true,
+      serviceWorkerPath: 'sw.js',
+      serviceWorkerParam: { scope: '/' },
+    });
+
+    // ── Notification click handler ──
+    // Fires in all cases: app closed, backgrounded, or foreground
+    // Receives full notification data — no URL inspection needed
+    OneSignal.Notifications.addEventListener('click', function(event) {
+      try {
+        var launchUrl = event.notification.launchURL || '';
+        if(!launchUrl) return;
+
+        // Parse params from notification URL
+        var urlParts = launchUrl.split('?');
+        if(urlParts.length < 2) return;
+        var params = new URLSearchParams(urlParts[1]);
+
+        // Digest notification
+        var digestParam = params.get('digest');
+        if(digestParam) {
+          var digestUrls = digestParam.split('||');
+          if(digestUrls.length > 0) {
+            // Wait for RSS then show digest
+            var attempts = 0;
+            var interval = setInterval(function(){
+              attempts++;
+              if(STORIES.length > 0 || attempts > 20) {
+                clearInterval(interval);
+                showDigestView(digestUrls);
+              }
+            }, 300);
+          }
+          return;
+        }
+
+        // Single story notification
+        var openUrl = params.get('open');
+        if(!openUrl) return;
+        var targetUrl = decodeURIComponent(openUrl);
+        var title = params.get('title') || null;
+        var src   = params.get('src')   || null;
+        var thumb = params.get('thumb') || null;
+
+        if(title) {
+          // Has metadata — show bridge screen immediately
+          showDirectBridge(targetUrl, title, src, thumb);
+        } else {
+          // No metadata — wait for RSS then try story match
+          openDeepLinkUrl(targetUrl);
+        }
+      } catch(err) {}
+    });
+  });
+}
+
+function showOSPrompt() {
+  if(isInShell || window.isFromTabSpace || osInitialized === false) return;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.Notifications.requestPermission();
+  });
+}
+
+// ═══════════════════════════════════════════
+// DEEP LINK HANDLER
+// Reads ?story=ID from URL on load
+// Jumps to that story card
+// ═══════════════════════════════════════════
+// Pending deep link — set by checkDeepLink, consumed by fetchAndApplyRSS callback
+var pendingDeepLink = null;
+
+function checkDeepLink() {
+  try {
+    if(isInShell) return;
+    var params = new URLSearchParams(window.location.search);
+
+    // Check for digest param first
+    var digestParam = params.get('digest');
+    if(digestParam) {
+      var digestUrls = digestParam.split('||');
+      if(digestUrls.length > 0) {
+        pendingDeepLink = { type: 'digest', urls: digestUrls };
+      }
+      return;
+    }
+
+    // Check for single story ?open= param
+    var openUrl = params.get('open');
+    if(!openUrl) return;
+    var targetUrl = decodeURIComponent(openUrl);
+
+    // Read optional story metadata passed in URL params
+    var title = params.get('title') || null;
+    var src   = params.get('src')   || null;
+    var thumb = params.get('thumb') || null;
+
+    if(title) {
+      // We have metadata — show bridge screen immediately, no STORIES lookup needed
+      pendingDeepLink = { type: 'direct', url: targetUrl, title: title, src: src, thumb: thumb };
+    } else {
+      // No metadata — try STORIES lookup (legacy fallback)
+      pendingDeepLink = { type: 'open', url: targetUrl };
+    }
+  } catch(e) {}
+}
+
+function consumePendingDeepLink() {
+  if(!pendingDeepLink) return;
+  var link = pendingDeepLink;
+  pendingDeepLink = null; // clear immediately — prevent double fire
+
+  if(link.type === 'direct') {
+    showDirectBridge(link.url, link.title, link.src, link.thumb);
+  } else if(link.type === 'digest') {
+    showDigestView(link.urls);
+  } else if(link.type === 'open') {
+    openDeepLinkUrl(link.url);
+  }
+}
+
+function showDirectBridge(url, title, src, thumb) {
+  // Ensure shell is visible
+  document.getElementById('shell').classList.add('on');
+  rdrUrl = url;
+
+  // Set header domain
+  var domain = url.replace('https://','').replace('http://','').split('/')[0];
+  document.getElementById('rdr-dom').textContent = domain;
+
+  // Reset reader states
+  document.getElementById('rdr-loading').style.display = 'none';
+  document.getElementById('rdr-iframe-wrap').style.display = 'none';
+  document.getElementById('rdr-digest').style.display = 'none';
+  document.getElementById('rdr-fallback').style.display = 'flex';
+
+  // Populate with notification data
+  document.getElementById('rdr-fb-chip').textContent = '';
+  document.getElementById('rdr-fb-chip').className = 'ctag';
+  document.getElementById('rdr-fb-time').textContent = src || '';
+  document.getElementById('rdr-fb-hl').textContent = title || domain;
+  document.getElementById('rdr-fb-insight').style.display = 'none';
+  document.getElementById('rdr-fb-src').textContent = src || domain;
+
+  // Thumbnail
+  var imgWrap = document.getElementById('rdr-fb-img-wrap');
+  var imgEl = document.getElementById('rdr-fb-img');
+  if(thumb) {
+    imgEl.src = thumb;
+    imgEl.onload = function(){ imgWrap.style.display = 'block'; };
+    imgEl.onerror = function(){ imgWrap.style.display = 'none'; };
+  } else {
+    imgWrap.style.display = 'none';
+  }
+
+  // Show reader
+  document.getElementById('shell').classList.remove('on');
+  document.getElementById('reader').classList.add('on');
+}
+
+function openDeepLinkUrl(targetUrl) {
+  // Wait for RSS stories to load (max 5s), then find story by URL
+  var attempts = 0;
+  var interval = setInterval(function() {
+    attempts++;
+
+    // Find story matching URL — try exact match first, then partial
+    var story = STORIES.find(function(s){
+      return s.url === targetUrl;
+    });
+    if(!story) {
+      story = STORIES.find(function(s){
+        return s.url.indexOf(targetUrl) > -1 || targetUrl.indexOf(s.url) > -1;
+      });
+    }
+
+    if(story) {
+      clearInterval(interval);
+      // Ensure shell is visible before opening reader
+      if(!document.getElementById('shell').classList.contains('on')) {
+        document.getElementById('shell').classList.add('on');
+      }
+      // Small delay to ensure DOM is ready
+      setTimeout(function(){
+        openReader(story.id);
+      }, 200);
+      return;
+    }
+
+    // After 5s — story not in feed, show minimal bridge
+    if(attempts > 10) {
+      clearInterval(interval);
+      showMinimalBridge(targetUrl);
+    }
+  }, 500);
+}
+
+function showMinimalBridge(url) {
+  // Extract domain for display
+  var domain = url.replace('https://','').replace('http://','').split('/')[0];
+  rdrUrl = url;
+
+  // Set header domain
+  document.getElementById('rdr-dom').textContent = domain;
+
+  // Reset all reader states
+  document.getElementById('rdr-loading').style.display = 'none';
+  document.getElementById('rdr-iframe-wrap').style.display = 'none';
+  document.getElementById('rdr-fallback').style.display = 'flex';
+
+  // Populate minimal fallback
+  document.getElementById('rdr-fb-img-wrap').style.display = 'none';
+  document.getElementById('rdr-fb-chip').textContent = '';
+  document.getElementById('rdr-fb-time').textContent = '';
+  document.getElementById('rdr-fb-hl').textContent = domain;
+  document.getElementById('rdr-fb-insight').style.display = 'none';
+  document.getElementById('rdr-fb-src').textContent = domain;
+
+  // Show reader, hide shell (fix: was incorrectly adding shell)
+  document.getElementById('shell').classList.remove('on');
+  document.getElementById('reader').classList.add('on');
+}
 </script>
+  <!-- Eruda debug button — TESTING ONLY -->
+  <button onclick="toggleEruda()" style="position:fixed;bottom:80px;left:14px;width:36px;height:36px;border-radius:50%;background:rgba(30,37,53,0.9);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)">⚙️</button>
 </div><!-- /app -->
 </body>
 </html>
