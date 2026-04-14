@@ -2396,148 +2396,46 @@ function escHtml(str) {
 // yahooTicker: reference for real build
 // ═══════════════════════════════════════════
 var SYMBOL_LIBRARY = {
-  commodities: {
-    label: 'Commodities',
-    symbols: [
-      {id:'gold',     label:'Gold',        unit:'USD/oz', price:'2,450.30', change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'GC=F'},
-      {id:'silver',   label:'Silver',      unit:'USD/oz', price:'28.64',   change:'+0.82', pct:'+0.82%', dir:'up', yahooTicker:'SI=F'},
-      {id:'platinum', label:'Platinum',    unit:'USD/oz', price:'986.40',  change:'-0.44', pct:'-0.44%', dir:'dn', yahooTicker:'PL=F'},
-      {id:'palladium',label:'Palladium',   unit:'USD/oz', price:'1,024.00',change:'-1.12', pct:'-1.12%', dir:'dn', yahooTicker:'PA=F'},
-      {id:'copper',   label:'Copper',      unit:'USD/lb', price:'4.28',    change:'+0.63', pct:'+0.63%', dir:'up', yahooTicker:'HG=F'},
-      {id:'aluminium',label:'Aluminium',   unit:'USD/t',  price:'2,312.00',change:'+0.31', pct:'+0.31%', dir:'up', yahooTicker:'ALI=F'},
-      {id:'oil_brent',label:'Oil (Brent)', unit:'USD/bbl',price:'92.14',   change:'+2.18', pct:'+2.42%', dir:'up', yahooTicker:'BZ=F'},
-      {id:'oil_wti',  label:'Oil (WTI)',   unit:'USD/bbl',price:'88.76',   change:'+1.94', pct:'+1.94%', dir:'up', yahooTicker:'CL=F'},
-      {id:'natgas',   label:'Nat Gas',     unit:'USD/MMBtu',price:'1.82',  change:'-0.55', pct:'-0.55%', dir:'dn', yahooTicker:'NG=F'},
-      {id:'wheat',    label:'Wheat',       unit:'USc/bu', price:'524.00',  change:'-0.76', pct:'-0.76%', dir:'dn', yahooTicker:'ZW=F'},
-      {id:'corn',     label:'Corn',        unit:'USc/bu', price:'432.75',  change:'+0.42', pct:'+0.42%', dir:'up', yahooTicker:'ZC=F'},
-      {id:'soybeans', label:'Soybeans',    unit:'USc/bu', price:'1,182.00',change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'ZS=F'},
-      {id:'sugar',    label:'Sugar',       unit:'USc/lb', price:'19.84',   change:'-0.30', pct:'-0.30%', dir:'dn', yahooTicker:'SB=F'},
-      {id:'cotton',   label:'Cotton',      unit:'USc/lb', price:'77.42',   change:'+0.52', pct:'+0.52%', dir:'up', yahooTicker:'CT=F'},
-      {id:'coffee',   label:'Coffee',      unit:'USc/lb', price:'189.60',  change:'+1.14', pct:'+1.14%', dir:'up', yahooTicker:'KC=F'}
-    ]
-  },
   crypto: {
     label: 'Crypto',
     symbols: [
-      {id:'btc',      label:'Bitcoin',   unit:'USD', price:'67,240',  change:'+3.41', pct:'+3.41%', dir:'up', yahooTicker:'BTC-USD'},
-      {id:'eth',      label:'Ethereum',  unit:'USD', price:'3,512',   change:'+2.18', pct:'+2.18%', dir:'up', yahooTicker:'ETH-USD'},
-      {id:'bnb',      label:'BNB',       unit:'USD', price:'412.80',  change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'BNB-USD'},
-      {id:'sol',      label:'Solana',    unit:'USD', price:'184.30',  change:'+4.62', pct:'+4.62%', dir:'up', yahooTicker:'SOL-USD'},
-      {id:'xrp',      label:'XRP',       unit:'USD', price:'0.6124',  change:'+1.08', pct:'+1.08%', dir:'up', yahooTicker:'XRP-USD'},
-      {id:'ada',      label:'Cardano',   unit:'USD', price:'0.4812',  change:'-0.83', pct:'-0.83%', dir:'dn', yahooTicker:'ADA-USD'},
-      {id:'avax',     label:'Avalanche', unit:'USD', price:'38.42',   change:'+2.94', pct:'+2.94%', dir:'up', yahooTicker:'AVAX-USD'},
-      {id:'matic',    label:'Polygon',   unit:'USD', price:'0.8240',  change:'-1.24', pct:'-1.24%', dir:'dn', yahooTicker:'MATIC-USD'},
-      {id:'link',     label:'Chainlink', unit:'USD', price:'18.64',   change:'+3.12', pct:'+3.12%', dir:'up', yahooTicker:'LINK-USD'},
-      {id:'doge',     label:'Dogecoin',  unit:'USD', price:'0.1684',  change:'+5.24', pct:'+5.24%', dir:'up', yahooTicker:'DOGE-USD'},
-      {id:'ton',      label:'Toncoin',   unit:'USD', price:'6.84',    change:'+2.44', pct:'+2.44%', dir:'up', yahooTicker:'TON-USD'},
-      {id:'usdt',     label:'USDT',      unit:'USD', price:'1.0002',  change:'0.00',  pct:'0.00%',  dir:'flat',yahooTicker:'USDT-USD'}
+      {id:'btc',      label:'Bitcoin',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eth',      label:'Ethereum',  unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'bnb',      label:'BNB',       unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'sol',      label:'Solana',    unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'xrp',      label:'XRP',       unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'ada',      label:'Cardano',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'avax',     label:'Avalanche', unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'matic',    label:'Polygon',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'link',     label:'Chainlink', unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'doge',     label:'Dogecoin',  unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'ton',      label:'Toncoin',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'}
     ]
   },
   forex: {
     label: 'Forex',
     symbols: [
-      {id:'usdinr',   label:'USD/INR',  unit:'rate', price:'83.12',   change:'-0.31', pct:'-0.37%', dir:'dn', yahooTicker:'USDINR=X'},
-      {id:'usdaed',   label:'USD/AED',  unit:'pegged',price:'3.6725', change:'0.00',  pct:'0.00%',  dir:'flat',yahooTicker:'USDAED=X'},
-      {id:'usdpkr',   label:'USD/PKR',  unit:'rate', price:'278.40',  change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'USDPKR=X'},
-      {id:'usdeur',   label:'USD/EUR',  unit:'rate', price:'0.9184',  change:'-0.12', pct:'-0.12%', dir:'dn', yahooTicker:'USDEUR=X'},
-      {id:'usdgbp',   label:'USD/GBP',  unit:'rate', price:'0.7842',  change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'USDGBP=X'},
-      {id:'usdjpy',   label:'USD/JPY',  unit:'rate', price:'151.24',  change:'+0.24', pct:'+0.24%', dir:'up', yahooTicker:'USDJPY=X'},
-      {id:'usdsgd',   label:'USD/SGD',  unit:'rate', price:'1.3412',  change:'+0.06', pct:'+0.06%', dir:'up', yahooTicker:'USDSGD=X'},
-      {id:'usdcad',   label:'USD/CAD',  unit:'rate', price:'1.3612',  change:'+0.04', pct:'+0.04%', dir:'up', yahooTicker:'USDCAD=X'},
-      {id:'usdaud',   label:'USD/AUD',  unit:'rate', price:'1.5284',  change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'USDAUD=X'},
-      {id:'eurinr',   label:'EUR/INR',  unit:'rate', price:'90.48',   change:'-0.22', pct:'-0.22%', dir:'dn', yahooTicker:'EURINR=X'},
-      {id:'gbpinr',   label:'GBP/INR',  unit:'rate', price:'106.12',  change:'-0.18', pct:'-0.18%', dir:'dn', yahooTicker:'GBPINR=X'},
-      {id:'aediinr',  label:'AED/INR',  unit:'rate', price:'22.64',   change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'AEDINR=X'},
-      {id:'usdcny',   label:'USD/CNY',  unit:'rate', price:'7.2384',  change:'+0.02', pct:'+0.02%', dir:'up', yahooTicker:'USDCNY=X'},
-      {id:'eurusd',   label:'EUR/USD',  unit:'rate', price:'1.0888',  change:'+0.12', pct:'+0.12%', dir:'up', yahooTicker:'EURUSD=X'},
-      {id:'gbpusd',   label:'GBP/USD',  unit:'rate', price:'1.2764',  change:'+0.08', pct:'+0.08%', dir:'up', yahooTicker:'GBPUSD=X'}
-    ]
-  },
-  india: {
-    label: 'India Markets',
-    symbols: [
-      {id:'nifty',    label:'Nifty 50',    unit:'pts', price:'22,456',  change:'+0.81', pct:'+0.81%', dir:'up', yahooTicker:'^NSEI'},
-      {id:'sensex',   label:'Sensex',      unit:'pts', price:'73,840',  change:'+0.76', pct:'+0.76%', dir:'up', yahooTicker:'^BSESN'},
-      {id:'banknifty',label:'Bank Nifty',  unit:'pts', price:'48,124',  change:'+1.12', pct:'+1.12%', dir:'up', yahooTicker:'^NSEBANK'},
-      {id:'niftyit',  label:'Nifty IT',    unit:'pts', price:'34,812',  change:'+1.44', pct:'+1.44%', dir:'up', yahooTicker:'^CNXIT'},
-      {id:'niftypharma',label:'Nifty Pharma',unit:'pts',price:'18,240', change:'+0.38', pct:'+0.38%', dir:'up', yahooTicker:'^CNXPHARMA'},
-      {id:'niftyauto',label:'Nifty Auto',  unit:'pts', price:'21,384',  change:'-0.24', pct:'-0.24%', dir:'dn', yahooTicker:'^CNXAUTO'},
-      {id:'niftyfmcg',label:'Nifty FMCG',  unit:'pts', price:'53,240',  change:'+0.14', pct:'+0.14%', dir:'up', yahooTicker:'^CNXFMCG'},
-      {id:'reliance', label:'Reliance',    unit:'INR', price:'2,924',   change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'RELIANCE.NS'},
-      {id:'tcs',      label:'TCS',         unit:'INR', price:'3,812',   change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'TCS.NS'},
-      {id:'infosys',  label:'Infosys',     unit:'INR', price:'1,584',   change:'+0.92', pct:'+0.92%', dir:'up', yahooTicker:'INFY.NS'},
-      {id:'hdfcbank', label:'HDFC Bank',   unit:'INR', price:'1,484',   change:'-0.32', pct:'-0.32%', dir:'dn', yahooTicker:'HDFCBANK.NS'},
-      {id:'icicibank',label:'ICICI Bank',  unit:'INR', price:'1,124',   change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'ICICIBANK.NS'},
-      {id:'wipro',    label:'Wipro',       unit:'INR', price:'484.20',  change:'+1.84', pct:'+1.84%', dir:'up', yahooTicker:'WIPRO.NS'},
-      {id:'hul',      label:'HUL',         unit:'INR', price:'2,324',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'HINDUNILVR.NS'},
-      {id:'itc',      label:'ITC',         unit:'INR', price:'432.40',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'ITC.NS'},
-      {id:'bajajfin', label:'Bajaj Fin',   unit:'INR', price:'7,124',   change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'BAJFINANCE.NS'},
-      {id:'niftymid', label:'Nifty Mid',   unit:'pts', price:'43,840',  change:'+0.62', pct:'+0.62%', dir:'up', yahooTicker:'^NSMIDCP100'},
-      {id:'niftysmall',label:'Nifty Small',unit:'pts', price:'14,284',  change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'^NSMICAP100'}
-    ]
-  },
-  global: {
-    label: 'Global Indices',
-    symbols: [
-      {id:'sp500',    label:'S&P 500',    unit:'pts', price:'5,248',   change:'-0.18', pct:'-0.18%', dir:'dn', yahooTicker:'^GSPC'},
-      {id:'nasdaq',   label:'Nasdaq',     unit:'pts', price:'16,384',  change:'+0.42', pct:'+0.42%', dir:'up', yahooTicker:'^IXIC'},
-      {id:'dow',      label:'Dow Jones',  unit:'pts', price:'39,424',  change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'^DJI'},
-      {id:'ftse',     label:'FTSE 100',   unit:'pts', price:'7,924',   change:'-0.22', pct:'-0.22%', dir:'dn', yahooTicker:'^FTSE'},
-      {id:'dax',      label:'DAX',        unit:'pts', price:'18,124',  change:'+0.34', pct:'+0.34%', dir:'up', yahooTicker:'^GDAXI'},
-      {id:'cac40',    label:'CAC 40',     unit:'pts', price:'8,124',   change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'^FCHI'},
-      {id:'nikkei',   label:'Nikkei 225', unit:'pts', price:'40,124',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'^N225'},
-      {id:'hangseng', label:'Hang Seng',  unit:'pts', price:'16,824',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'^HSI'},
-      {id:'shanghai', label:'Shanghai',   unit:'pts', price:'3,042',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'000001.SS'},
-      {id:'asx200',   label:'ASX 200',    unit:'pts', price:'7,824',   change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'^AXJO'},
-      {id:'kospi',    label:'KOSPI',      unit:'pts', price:'2,724',   change:'+0.32', pct:'+0.32%', dir:'up', yahooTicker:'^KS11'},
-      {id:'bovespa',  label:'Bovespa',    unit:'pts', price:'124,842', change:'-0.44', pct:'-0.44%', dir:'dn', yahooTicker:'^BVSP'},
-      {id:'tsx',      label:'TSX',        unit:'pts', price:'21,824',  change:'+0.22', pct:'+0.22%', dir:'up', yahooTicker:'^GSPTSE'},
-      {id:'eurostoxx',label:'Euro Stoxx', unit:'pts', price:'5,024',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'^STOXX50E'},
-      {id:'vix',      label:'VIX',        unit:'idx', price:'14.24',   change:'+3.84', pct:'+3.84%', dir:'up', yahooTicker:'^VIX'},
-      {id:'dxy',      label:'DXY',        unit:'idx', price:'104.28',  change:'+0.14', pct:'+0.14%', dir:'up', yahooTicker:'DX-Y.NYB'}
-    ]
-  },
-  uae: {
-    label: 'UAE & Gulf',
-    symbols: [
-      {id:'emaar',    label:'Emaar',       unit:'AED', price:'7.84',    change:'+0.52', pct:'+0.52%', dir:'up', yahooTicker:'EMAAR.DU'},
-      {id:'uaeetf',   label:'UAE ETF',     unit:'USD', price:'15.42',   change:'+0.19', pct:'+0.19%', dir:'up', yahooTicker:'UAE'},
-      {id:'adnoc',    label:'ADNOC Dist',  unit:'AED', price:'3.84',    change:'+0.26', pct:'+0.26%', dir:'up', yahooTicker:'ADNOCDIST.AD'},
-      {id:'fab',      label:'FAB',         unit:'AED', price:'13.24',   change:'+0.68', pct:'+0.68%', dir:'up', yahooTicker:'FAB.AD'},
-      {id:'emiratesnbd',label:'Emirates NBD',unit:'AED',price:'18.42',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'ENBD.DU'},
-      {id:'dpworld',  label:'DP World',    unit:'USD', price:'19.84',   change:'-0.24', pct:'-0.24%', dir:'dn', yahooTicker:'DPW.DU'},
-      {id:'aldar',    label:'Aldar Prop',  unit:'AED', price:'6.24',    change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'ALDAR.AD'},
-      {id:'adib',     label:'ADIB',        unit:'AED', price:'9.84',    change:'+0.82', pct:'+0.82%', dir:'up', yahooTicker:'ADIB.AD'},
-      {id:'dib',      label:'Dubai Islam', unit:'AED', price:'6.84',    change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'DIB.DU'},
-      {id:'dangas',   label:'Dana Gas',    unit:'AED', price:'0.9640',  change:'+1.05', pct:'+1.05%', dir:'up', yahooTicker:'DANA.AD'},
-      {id:'aramco',   label:'Aramco',      unit:'SAR', price:'28.24',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'2222.SR'},
-      {id:'sabic',    label:'SABIC',       unit:'SAR', price:'84.40',   change:'-0.47', pct:'-0.47%', dir:'dn', yahooTicker:'2010.SR'}
-    ]
-  },
-  usstocks: {
-    label: 'US Stocks',
-    symbols: [
-      {id:'aapl',     label:'Apple',       unit:'USD', price:'172.42',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'AAPL'},
-      {id:'msft',     label:'Microsoft',   unit:'USD', price:'412.84',  change:'+0.92', pct:'+0.92%', dir:'up', yahooTicker:'MSFT'},
-      {id:'nvda',     label:'Nvidia',      unit:'USD', price:'884.24',  change:'+3.24', pct:'+3.24%', dir:'up', yahooTicker:'NVDA'},
-      {id:'amzn',     label:'Amazon',      unit:'USD', price:'184.24',  change:'+1.14', pct:'+1.14%', dir:'up', yahooTicker:'AMZN'},
-      {id:'googl',    label:'Alphabet',    unit:'USD', price:'164.84',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'GOOGL'},
-      {id:'meta',     label:'Meta',        unit:'USD', price:'524.84',  change:'+1.84', pct:'+1.84%', dir:'up', yahooTicker:'META'},
-      {id:'tsla',     label:'Tesla',       unit:'USD', price:'162.84',  change:'-2.84', pct:'-2.84%', dir:'dn', yahooTicker:'TSLA'},
-      {id:'brk',      label:'Berkshire',   unit:'USD', price:'412.84',  change:'+0.24', pct:'+0.24%', dir:'up', yahooTicker:'BRK-B'},
-      {id:'jpm',      label:'JPMorgan',    unit:'USD', price:'202.84',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'JPM'},
-      {id:'jnj',      label:'J&J',         unit:'USD', price:'152.84',  change:'-0.28', pct:'-0.28%', dir:'dn', yahooTicker:'JNJ'},
-      {id:'xom',      label:'Exxon',       unit:'USD', price:'118.84',  change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'XOM'},
-      {id:'v',        label:'Visa',        unit:'USD', price:'284.84',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'V'},
-      {id:'wmt',      label:'Walmart',     unit:'USD', price:'64.84',   change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'WMT'},
-      {id:'unh',      label:'UnitedHealth',unit:'USD', price:'524.84',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'UNH'},
-      {id:'cvx',      label:'Chevron',     unit:'USD', price:'164.84',  change:'+1.44', pct:'+1.44%', dir:'up', yahooTicker:'CVX'}
+      {id:'usdinr',   label:'USD/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdaed',   label:'USD/AED',  unit:'pegged',price:'3.6725', change:'0.00', pct:'0.00%', dir:'flat'},
+      {id:'usdpkr',   label:'USD/PKR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdeur',   label:'USD/EUR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdgbp',   label:'USD/GBP',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdjpy',   label:'USD/JPY',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdsgd',   label:'USD/SGD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdcad',   label:'USD/CAD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdaud',   label:'USD/AUD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eurinr',   label:'EUR/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'gbpinr',   label:'GBP/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'aediinr',  label:'AED/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdcny',   label:'USD/CNY',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eurusd',   label:'EUR/USD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'gbpusd',   label:'GBP/USD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'}
     ]
   }
 };
 
 // Default 12 symbols shown on first launch
-var DEFAULT_TICKER_IDS = ['gold','oil_brent','btc','usdinr','sp500','nasdaq','nifty','sensex','ftse','dxy','emaar','uaeetf'];
+var DEFAULT_TICKER_IDS = ['btc','eth','sol','usdinr','usdaed','usdpkr','eurusd','gbpinr','doge','bnb','xrp','usdjpy'];
 var MAX_TICKER_SYMBOLS = 12;
 var TICKER_LS_KEY = 'tn-ticker-symbols-v1';
 
@@ -4919,148 +4817,46 @@ var toastTimer;
 // yahooTicker: reference for real build
 // ═══════════════════════════════════════════
 var SYMBOL_LIBRARY = {
-  commodities: {
-    label: 'Commodities',
-    symbols: [
-      {id:'gold',     label:'Gold',        unit:'USD/oz', price:'2,450.30', change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'GC=F'},
-      {id:'silver',   label:'Silver',      unit:'USD/oz', price:'28.64',   change:'+0.82', pct:'+0.82%', dir:'up', yahooTicker:'SI=F'},
-      {id:'platinum', label:'Platinum',    unit:'USD/oz', price:'986.40',  change:'-0.44', pct:'-0.44%', dir:'dn', yahooTicker:'PL=F'},
-      {id:'palladium',label:'Palladium',   unit:'USD/oz', price:'1,024.00',change:'-1.12', pct:'-1.12%', dir:'dn', yahooTicker:'PA=F'},
-      {id:'copper',   label:'Copper',      unit:'USD/lb', price:'4.28',    change:'+0.63', pct:'+0.63%', dir:'up', yahooTicker:'HG=F'},
-      {id:'aluminium',label:'Aluminium',   unit:'USD/t',  price:'2,312.00',change:'+0.31', pct:'+0.31%', dir:'up', yahooTicker:'ALI=F'},
-      {id:'oil_brent',label:'Oil (Brent)', unit:'USD/bbl',price:'92.14',   change:'+2.18', pct:'+2.42%', dir:'up', yahooTicker:'BZ=F'},
-      {id:'oil_wti',  label:'Oil (WTI)',   unit:'USD/bbl',price:'88.76',   change:'+1.94', pct:'+1.94%', dir:'up', yahooTicker:'CL=F'},
-      {id:'natgas',   label:'Nat Gas',     unit:'USD/MMBtu',price:'1.82',  change:'-0.55', pct:'-0.55%', dir:'dn', yahooTicker:'NG=F'},
-      {id:'wheat',    label:'Wheat',       unit:'USc/bu', price:'524.00',  change:'-0.76', pct:'-0.76%', dir:'dn', yahooTicker:'ZW=F'},
-      {id:'corn',     label:'Corn',        unit:'USc/bu', price:'432.75',  change:'+0.42', pct:'+0.42%', dir:'up', yahooTicker:'ZC=F'},
-      {id:'soybeans', label:'Soybeans',    unit:'USc/bu', price:'1,182.00',change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'ZS=F'},
-      {id:'sugar',    label:'Sugar',       unit:'USc/lb', price:'19.84',   change:'-0.30', pct:'-0.30%', dir:'dn', yahooTicker:'SB=F'},
-      {id:'cotton',   label:'Cotton',      unit:'USc/lb', price:'77.42',   change:'+0.52', pct:'+0.52%', dir:'up', yahooTicker:'CT=F'},
-      {id:'coffee',   label:'Coffee',      unit:'USc/lb', price:'189.60',  change:'+1.14', pct:'+1.14%', dir:'up', yahooTicker:'KC=F'}
-    ]
-  },
   crypto: {
     label: 'Crypto',
     symbols: [
-      {id:'btc',      label:'Bitcoin',   unit:'USD', price:'67,240',  change:'+3.41', pct:'+3.41%', dir:'up', yahooTicker:'BTC-USD'},
-      {id:'eth',      label:'Ethereum',  unit:'USD', price:'3,512',   change:'+2.18', pct:'+2.18%', dir:'up', yahooTicker:'ETH-USD'},
-      {id:'bnb',      label:'BNB',       unit:'USD', price:'412.80',  change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'BNB-USD'},
-      {id:'sol',      label:'Solana',    unit:'USD', price:'184.30',  change:'+4.62', pct:'+4.62%', dir:'up', yahooTicker:'SOL-USD'},
-      {id:'xrp',      label:'XRP',       unit:'USD', price:'0.6124',  change:'+1.08', pct:'+1.08%', dir:'up', yahooTicker:'XRP-USD'},
-      {id:'ada',      label:'Cardano',   unit:'USD', price:'0.4812',  change:'-0.83', pct:'-0.83%', dir:'dn', yahooTicker:'ADA-USD'},
-      {id:'avax',     label:'Avalanche', unit:'USD', price:'38.42',   change:'+2.94', pct:'+2.94%', dir:'up', yahooTicker:'AVAX-USD'},
-      {id:'matic',    label:'Polygon',   unit:'USD', price:'0.8240',  change:'-1.24', pct:'-1.24%', dir:'dn', yahooTicker:'MATIC-USD'},
-      {id:'link',     label:'Chainlink', unit:'USD', price:'18.64',   change:'+3.12', pct:'+3.12%', dir:'up', yahooTicker:'LINK-USD'},
-      {id:'doge',     label:'Dogecoin',  unit:'USD', price:'0.1684',  change:'+5.24', pct:'+5.24%', dir:'up', yahooTicker:'DOGE-USD'},
-      {id:'ton',      label:'Toncoin',   unit:'USD', price:'6.84',    change:'+2.44', pct:'+2.44%', dir:'up', yahooTicker:'TON-USD'},
-      {id:'usdt',     label:'USDT',      unit:'USD', price:'1.0002',  change:'0.00',  pct:'0.00%',  dir:'flat',yahooTicker:'USDT-USD'}
+      {id:'btc',      label:'Bitcoin',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eth',      label:'Ethereum',  unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'bnb',      label:'BNB',       unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'sol',      label:'Solana',    unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'xrp',      label:'XRP',       unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'ada',      label:'Cardano',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'avax',     label:'Avalanche', unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'matic',    label:'Polygon',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'link',     label:'Chainlink', unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'doge',     label:'Dogecoin',  unit:'USD', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'ton',      label:'Toncoin',   unit:'USD', price:'—', change:'—', pct:'—', dir:'up'}
     ]
   },
   forex: {
     label: 'Forex',
     symbols: [
-      {id:'usdinr',   label:'USD/INR',  unit:'rate', price:'83.12',   change:'-0.31', pct:'-0.37%', dir:'dn', yahooTicker:'USDINR=X'},
-      {id:'usdaed',   label:'USD/AED',  unit:'pegged',price:'3.6725', change:'0.00',  pct:'0.00%',  dir:'flat',yahooTicker:'USDAED=X'},
-      {id:'usdpkr',   label:'USD/PKR',  unit:'rate', price:'278.40',  change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'USDPKR=X'},
-      {id:'usdeur',   label:'USD/EUR',  unit:'rate', price:'0.9184',  change:'-0.12', pct:'-0.12%', dir:'dn', yahooTicker:'USDEUR=X'},
-      {id:'usdgbp',   label:'USD/GBP',  unit:'rate', price:'0.7842',  change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'USDGBP=X'},
-      {id:'usdjpy',   label:'USD/JPY',  unit:'rate', price:'151.24',  change:'+0.24', pct:'+0.24%', dir:'up', yahooTicker:'USDJPY=X'},
-      {id:'usdsgd',   label:'USD/SGD',  unit:'rate', price:'1.3412',  change:'+0.06', pct:'+0.06%', dir:'up', yahooTicker:'USDSGD=X'},
-      {id:'usdcad',   label:'USD/CAD',  unit:'rate', price:'1.3612',  change:'+0.04', pct:'+0.04%', dir:'up', yahooTicker:'USDCAD=X'},
-      {id:'usdaud',   label:'USD/AUD',  unit:'rate', price:'1.5284',  change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'USDAUD=X'},
-      {id:'eurinr',   label:'EUR/INR',  unit:'rate', price:'90.48',   change:'-0.22', pct:'-0.22%', dir:'dn', yahooTicker:'EURINR=X'},
-      {id:'gbpinr',   label:'GBP/INR',  unit:'rate', price:'106.12',  change:'-0.18', pct:'-0.18%', dir:'dn', yahooTicker:'GBPINR=X'},
-      {id:'aediinr',  label:'AED/INR',  unit:'rate', price:'22.64',   change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'AEDINR=X'},
-      {id:'usdcny',   label:'USD/CNY',  unit:'rate', price:'7.2384',  change:'+0.02', pct:'+0.02%', dir:'up', yahooTicker:'USDCNY=X'},
-      {id:'eurusd',   label:'EUR/USD',  unit:'rate', price:'1.0888',  change:'+0.12', pct:'+0.12%', dir:'up', yahooTicker:'EURUSD=X'},
-      {id:'gbpusd',   label:'GBP/USD',  unit:'rate', price:'1.2764',  change:'+0.08', pct:'+0.08%', dir:'up', yahooTicker:'GBPUSD=X'}
-    ]
-  },
-  india: {
-    label: 'India Markets',
-    symbols: [
-      {id:'nifty',    label:'Nifty 50',    unit:'pts', price:'22,456',  change:'+0.81', pct:'+0.81%', dir:'up', yahooTicker:'^NSEI'},
-      {id:'sensex',   label:'Sensex',      unit:'pts', price:'73,840',  change:'+0.76', pct:'+0.76%', dir:'up', yahooTicker:'^BSESN'},
-      {id:'banknifty',label:'Bank Nifty',  unit:'pts', price:'48,124',  change:'+1.12', pct:'+1.12%', dir:'up', yahooTicker:'^NSEBANK'},
-      {id:'niftyit',  label:'Nifty IT',    unit:'pts', price:'34,812',  change:'+1.44', pct:'+1.44%', dir:'up', yahooTicker:'^CNXIT'},
-      {id:'niftypharma',label:'Nifty Pharma',unit:'pts',price:'18,240', change:'+0.38', pct:'+0.38%', dir:'up', yahooTicker:'^CNXPHARMA'},
-      {id:'niftyauto',label:'Nifty Auto',  unit:'pts', price:'21,384',  change:'-0.24', pct:'-0.24%', dir:'dn', yahooTicker:'^CNXAUTO'},
-      {id:'niftyfmcg',label:'Nifty FMCG',  unit:'pts', price:'53,240',  change:'+0.14', pct:'+0.14%', dir:'up', yahooTicker:'^CNXFMCG'},
-      {id:'reliance', label:'Reliance',    unit:'INR', price:'2,924',   change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'RELIANCE.NS'},
-      {id:'tcs',      label:'TCS',         unit:'INR', price:'3,812',   change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'TCS.NS'},
-      {id:'infosys',  label:'Infosys',     unit:'INR', price:'1,584',   change:'+0.92', pct:'+0.92%', dir:'up', yahooTicker:'INFY.NS'},
-      {id:'hdfcbank', label:'HDFC Bank',   unit:'INR', price:'1,484',   change:'-0.32', pct:'-0.32%', dir:'dn', yahooTicker:'HDFCBANK.NS'},
-      {id:'icicibank',label:'ICICI Bank',  unit:'INR', price:'1,124',   change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'ICICIBANK.NS'},
-      {id:'wipro',    label:'Wipro',       unit:'INR', price:'484.20',  change:'+1.84', pct:'+1.84%', dir:'up', yahooTicker:'WIPRO.NS'},
-      {id:'hul',      label:'HUL',         unit:'INR', price:'2,324',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'HINDUNILVR.NS'},
-      {id:'itc',      label:'ITC',         unit:'INR', price:'432.40',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'ITC.NS'},
-      {id:'bajajfin', label:'Bajaj Fin',   unit:'INR', price:'7,124',   change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'BAJFINANCE.NS'},
-      {id:'niftymid', label:'Nifty Mid',   unit:'pts', price:'43,840',  change:'+0.62', pct:'+0.62%', dir:'up', yahooTicker:'^NSMIDCP100'},
-      {id:'niftysmall',label:'Nifty Small',unit:'pts', price:'14,284',  change:'+0.84', pct:'+0.84%', dir:'up', yahooTicker:'^NSMICAP100'}
-    ]
-  },
-  global: {
-    label: 'Global Indices',
-    symbols: [
-      {id:'sp500',    label:'S&P 500',    unit:'pts', price:'5,248',   change:'-0.18', pct:'-0.18%', dir:'dn', yahooTicker:'^GSPC'},
-      {id:'nasdaq',   label:'Nasdaq',     unit:'pts', price:'16,384',  change:'+0.42', pct:'+0.42%', dir:'up', yahooTicker:'^IXIC'},
-      {id:'dow',      label:'Dow Jones',  unit:'pts', price:'39,424',  change:'-0.08', pct:'-0.08%', dir:'dn', yahooTicker:'^DJI'},
-      {id:'ftse',     label:'FTSE 100',   unit:'pts', price:'7,924',   change:'-0.22', pct:'-0.22%', dir:'dn', yahooTicker:'^FTSE'},
-      {id:'dax',      label:'DAX',        unit:'pts', price:'18,124',  change:'+0.34', pct:'+0.34%', dir:'up', yahooTicker:'^GDAXI'},
-      {id:'cac40',    label:'CAC 40',     unit:'pts', price:'8,124',   change:'+0.18', pct:'+0.18%', dir:'up', yahooTicker:'^FCHI'},
-      {id:'nikkei',   label:'Nikkei 225', unit:'pts', price:'40,124',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'^N225'},
-      {id:'hangseng', label:'Hang Seng',  unit:'pts', price:'16,824',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'^HSI'},
-      {id:'shanghai', label:'Shanghai',   unit:'pts', price:'3,042',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'000001.SS'},
-      {id:'asx200',   label:'ASX 200',    unit:'pts', price:'7,824',   change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'^AXJO'},
-      {id:'kospi',    label:'KOSPI',      unit:'pts', price:'2,724',   change:'+0.32', pct:'+0.32%', dir:'up', yahooTicker:'^KS11'},
-      {id:'bovespa',  label:'Bovespa',    unit:'pts', price:'124,842', change:'-0.44', pct:'-0.44%', dir:'dn', yahooTicker:'^BVSP'},
-      {id:'tsx',      label:'TSX',        unit:'pts', price:'21,824',  change:'+0.22', pct:'+0.22%', dir:'up', yahooTicker:'^GSPTSE'},
-      {id:'eurostoxx',label:'Euro Stoxx', unit:'pts', price:'5,024',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'^STOXX50E'},
-      {id:'vix',      label:'VIX',        unit:'idx', price:'14.24',   change:'+3.84', pct:'+3.84%', dir:'up', yahooTicker:'^VIX'},
-      {id:'dxy',      label:'DXY',        unit:'idx', price:'104.28',  change:'+0.14', pct:'+0.14%', dir:'up', yahooTicker:'DX-Y.NYB'}
-    ]
-  },
-  uae: {
-    label: 'UAE & Gulf',
-    symbols: [
-      {id:'emaar',    label:'Emaar',       unit:'AED', price:'7.84',    change:'+0.52', pct:'+0.52%', dir:'up', yahooTicker:'EMAAR.DU'},
-      {id:'uaeetf',   label:'UAE ETF',     unit:'USD', price:'15.42',   change:'+0.19', pct:'+0.19%', dir:'up', yahooTicker:'UAE'},
-      {id:'adnoc',    label:'ADNOC Dist',  unit:'AED', price:'3.84',    change:'+0.26', pct:'+0.26%', dir:'up', yahooTicker:'ADNOCDIST.AD'},
-      {id:'fab',      label:'FAB',         unit:'AED', price:'13.24',   change:'+0.68', pct:'+0.68%', dir:'up', yahooTicker:'FAB.AD'},
-      {id:'emiratesnbd',label:'Emirates NBD',unit:'AED',price:'18.42',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'ENBD.DU'},
-      {id:'dpworld',  label:'DP World',    unit:'USD', price:'19.84',   change:'-0.24', pct:'-0.24%', dir:'dn', yahooTicker:'DPW.DU'},
-      {id:'aldar',    label:'Aldar Prop',  unit:'AED', price:'6.24',    change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'ALDAR.AD'},
-      {id:'adib',     label:'ADIB',        unit:'AED', price:'9.84',    change:'+0.82', pct:'+0.82%', dir:'up', yahooTicker:'ADIB.AD'},
-      {id:'dib',      label:'Dubai Islam', unit:'AED', price:'6.84',    change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'DIB.DU'},
-      {id:'dangas',   label:'Dana Gas',    unit:'AED', price:'0.9640',  change:'+1.05', pct:'+1.05%', dir:'up', yahooTicker:'DANA.AD'},
-      {id:'aramco',   label:'Aramco',      unit:'SAR', price:'28.24',   change:'+0.28', pct:'+0.28%', dir:'up', yahooTicker:'2222.SR'},
-      {id:'sabic',    label:'SABIC',       unit:'SAR', price:'84.40',   change:'-0.47', pct:'-0.47%', dir:'dn', yahooTicker:'2010.SR'}
-    ]
-  },
-  usstocks: {
-    label: 'US Stocks',
-    symbols: [
-      {id:'aapl',     label:'Apple',       unit:'USD', price:'172.42',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'AAPL'},
-      {id:'msft',     label:'Microsoft',   unit:'USD', price:'412.84',  change:'+0.92', pct:'+0.92%', dir:'up', yahooTicker:'MSFT'},
-      {id:'nvda',     label:'Nvidia',      unit:'USD', price:'884.24',  change:'+3.24', pct:'+3.24%', dir:'up', yahooTicker:'NVDA'},
-      {id:'amzn',     label:'Amazon',      unit:'USD', price:'184.24',  change:'+1.14', pct:'+1.14%', dir:'up', yahooTicker:'AMZN'},
-      {id:'googl',    label:'Alphabet',    unit:'USD', price:'164.84',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'GOOGL'},
-      {id:'meta',     label:'Meta',        unit:'USD', price:'524.84',  change:'+1.84', pct:'+1.84%', dir:'up', yahooTicker:'META'},
-      {id:'tsla',     label:'Tesla',       unit:'USD', price:'162.84',  change:'-2.84', pct:'-2.84%', dir:'dn', yahooTicker:'TSLA'},
-      {id:'brk',      label:'Berkshire',   unit:'USD', price:'412.84',  change:'+0.24', pct:'+0.24%', dir:'up', yahooTicker:'BRK-B'},
-      {id:'jpm',      label:'JPMorgan',    unit:'USD', price:'202.84',  change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'JPM'},
-      {id:'jnj',      label:'J&J',         unit:'USD', price:'152.84',  change:'-0.28', pct:'-0.28%', dir:'dn', yahooTicker:'JNJ'},
-      {id:'xom',      label:'Exxon',       unit:'USD', price:'118.84',  change:'+1.24', pct:'+1.24%', dir:'up', yahooTicker:'XOM'},
-      {id:'v',        label:'Visa',        unit:'USD', price:'284.84',  change:'+0.64', pct:'+0.64%', dir:'up', yahooTicker:'V'},
-      {id:'wmt',      label:'Walmart',     unit:'USD', price:'64.84',   change:'+0.44', pct:'+0.44%', dir:'up', yahooTicker:'WMT'},
-      {id:'unh',      label:'UnitedHealth',unit:'USD', price:'524.84',  change:'-0.84', pct:'-0.84%', dir:'dn', yahooTicker:'UNH'},
-      {id:'cvx',      label:'Chevron',     unit:'USD', price:'164.84',  change:'+1.44', pct:'+1.44%', dir:'up', yahooTicker:'CVX'}
+      {id:'usdinr',   label:'USD/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdaed',   label:'USD/AED',  unit:'pegged',price:'3.6725', change:'0.00', pct:'0.00%', dir:'flat'},
+      {id:'usdpkr',   label:'USD/PKR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdeur',   label:'USD/EUR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdgbp',   label:'USD/GBP',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdjpy',   label:'USD/JPY',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdsgd',   label:'USD/SGD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdcad',   label:'USD/CAD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdaud',   label:'USD/AUD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eurinr',   label:'EUR/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'gbpinr',   label:'GBP/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'aediinr',  label:'AED/INR',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'usdcny',   label:'USD/CNY',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'eurusd',   label:'EUR/USD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'},
+      {id:'gbpusd',   label:'GBP/USD',  unit:'rate', price:'—', change:'—', pct:'—', dir:'up'}
     ]
   }
 };
 
 // Default 12 symbols shown on first launch
-var DEFAULT_TICKER_IDS = ['gold','oil_brent','btc','usdinr','sp500','nasdaq','nifty','sensex','ftse','dxy','emaar','uaeetf'];
+var DEFAULT_TICKER_IDS = ['btc','eth','sol','usdinr','usdaed','usdpkr','eurusd','gbpinr','doge','bnb','xrp','usdjpy'];
 var MAX_TICKER_SYMBOLS = 12;
 var TICKER_LS_KEY = 'tn-ticker-symbols-v1';
 
