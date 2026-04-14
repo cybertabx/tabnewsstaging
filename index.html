@@ -2582,7 +2582,7 @@ function updateTickerLabel(isLive) {
 // ══════════════════════════════════════════
 // FOREX via Frankfurter.app
 // Free, no key, proper CORS, updated daily
-// https://api.frankfurter.app/latest?from=USD&to=INR,PKR,EUR,GBP,...
+// https://api.frankfurter.dev/v1/latest?from=USD&to=INR,PKR,EUR,GBP,...
 // ══════════════════════════════════════════
 function fetchForexPrices(activeIds) {
   // Get active forex symbol ids
@@ -2602,7 +2602,7 @@ function fetchForexPrices(activeIds) {
     if(targets.indexOf(t) === -1) targets.push(t);
   });
 
-  var url = 'https://api.frankfurter.app/latest?from=USD&to=' + targets.join(',');
+  var url = 'https://api.frankfurter.dev/v1/latest?from=USD&to=' + targets.join(',');
 
   return fetch(url, { headers: { 'Accept': 'application/json' } })
     .then(function(res) { if(!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
@@ -4929,7 +4929,7 @@ var CRYPTO_BINANCE_MAP = {
 // ══════════════════════════════════════════
 // FOREX via Frankfurter.app
 // Free, no key, proper CORS, updated daily
-// https://api.frankfurter.app/latest?from=USD&to=INR,PKR,EUR,GBP,...
+// https://api.frankfurter.dev/v1/latest?from=USD&to=INR,PKR,EUR,GBP,...
 // ══════════════════════════════════════════
 
 
@@ -5678,7 +5678,7 @@ window.testTickerFetch = function() {
 
   // Test Frankfurter
   console.log('%c Testing Frankfurter.app (forex)...', 'color:#4f8ef7;font-weight:bold');
-  fetch('https://api.frankfurter.app/latest?from=USD&to=INR,PKR,EUR,GBP')
+  fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=INR,PKR,EUR,GBP')
     .then(function(r){ return r.json(); })
     .then(function(d){
       console.log('✓ Frankfurter OK — rates:', d.rates);
