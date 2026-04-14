@@ -313,7 +313,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .cc-new-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}
 
 /* ── READER ── */
-.reader{display:none;flex-direction:column;flex:1;min-height:0}.reader.on{display:flex}
+.reader{display:none;flex-direction:column;flex:1;min-height:0;overflow:hidden}.reader.on{display:flex}
 .rdr-hdr{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:0.5px solid var(--border);background:var(--navy);flex-shrink:0}
 .rdr-back{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 12px;font-size:12px;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif}
 .rdr-dom{font-size:12px;color:var(--muted);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -426,7 +426,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .rdr-fallback{flex:1;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .rdr-fb-img-wrap{width:100%;height:180px;overflow:hidden;flex-shrink:0;background:#0b1726}
 .rdr-fb-img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.rdr-fb-body{padding:20px 20px 32px;display:flex;flex-direction:column;gap:14px}
+.rdr-fb-body{padding:20px 20px 32px;display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center}
 .rdr-fb-meta{display:flex;align-items:center;gap:10px}
 .rdr-fb-time{font-size:11px;color:var(--muted)}
 .rdr-fb-hl{font-family:'DM Serif Display',serif;font-size:19px;line-height:1.35;color:#f8faff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -436,11 +436,11 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .rdr-fb-sub{font-size:10px;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.5px}
 
 /* ── Digest view ── */
-.rdr-digest{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rdr-digest{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
 .rdr-digest-inner{padding:0 0 32px}
 .rdr-ds{border-bottom:0.5px solid var(--border)}
 .rdr-ds:last-child{border-bottom:none}
-.rdr-ds-img-wrap{width:100%;height:160px;overflow:hidden;background:#0b1726;flex-shrink:0}
+.rdr-ds-img-wrap{width:100%;height:160px;max-height:160px;overflow:hidden;background:#0b1726;flex-shrink:0}
 .rdr-ds-img{width:100%;height:100%;object-fit:cover;object-position:top center}
 .rdr-ds-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:12px}
 .rdr-ds-meta{display:flex;align-items:center;gap:8px}
@@ -460,8 +460,71 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .rdr-digest-header{padding:14px 18px 12px;border-bottom:0.5px solid var(--border);background:var(--navy);flex-shrink:0;display:none}
 .rdr-digest-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal)}
 .rdr-digest-date{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ═══════════════════════════════════════════
+   MARKETS OVERLAY
+═══════════════════════════════════════════ */
+.markets{display:none;position:absolute;inset:0;background:var(--dark);flex-direction:column;z-index:20}
+.markets.on{display:flex}
+
+/* Header */
+.mkt-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 12px;background:var(--navy);border-bottom:0.5px solid var(--border);flex-shrink:0}
+.mkt-title{font-size:16px;font-weight:700;letter-spacing:-0.3px}
+.mkt-title span{color:var(--teal)}
+.mkt-back{font-size:14px;color:var(--blue);background:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0}
+.mkt-add-btn{width:32px;height:32px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.25);color:var(--blue);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+
+/* Sub tabs */
+.mkt-sub-tabs{display:flex;background:var(--navy);border-bottom:0.5px solid var(--border);flex-shrink:0}
+.mkt-sub-tab{flex:1;padding:10px 0;font-size:11px;font-weight:600;color:var(--muted);text-align:center;cursor:pointer;letter-spacing:0.3px;border-bottom:2px solid transparent;transition:all 0.2s}
+.mkt-sub-tab.on{color:var(--teal);border-bottom-color:var(--teal)}
+
+/* Content */
+.mkt-content{flex:1;position:relative;overflow:hidden;min-height:0}
+.mkt-view{display:none;flex-direction:column;position:absolute;inset:0}
+.mkt-view.on{display:flex}
+.mkt-widget-wrap{flex:1;overflow:hidden;background:var(--dark);min-height:0}
+.mkt-widget-wrap .tradingview-widget-container{height:100%;width:100%}
+.mkt-widget-wrap .tradingview-widget-container__widget{height:calc(100% - 28px);width:100%}
+.mkt-widget-attr{font-size:10px;color:rgba(255,255,255,0.2);text-align:center;padding:5px 0 3px;flex-shrink:0}
+
+/* Empty state */
+.mkt-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px 24px;text-align:center}
+.mkt-empty-icon{font-size:36px;opacity:0.35}
+.mkt-empty-title{font-size:15px;font-weight:600;color:rgba(255,255,255,0.5)}
+.mkt-empty-sub{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* Chart overlay */
+.mkt-chart{display:none;position:absolute;inset:0;background:var(--dark);flex-direction:column;z-index:5}
+.mkt-chart.on{display:flex}
+.mkt-chart-hdr{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--navy);border-bottom:0.5px solid var(--border);flex-shrink:0}
+.mkt-chart-info{flex:1}
+.mkt-chart-sym{font-size:15px;font-weight:700}
+.mkt-chart-name{font-size:11px;color:var(--muted);margin-top:1px}
+
+/* Add Sheet */
+.mkt-sheet-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.65);z-index:10;display:none;align-items:flex-end}
+.mkt-sheet-overlay.on{display:flex}
+.mkt-sheet{width:100%;background:#0e1826;border-radius:20px 20px 0 0;padding:18px 18px 36px;max-height:82vh;display:flex;flex-direction:column;gap:12px}
+.mkt-sheet-handle{width:36px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin:0 auto 2px}
+.mkt-sheet-title{font-size:15px;font-weight:700;text-align:center}
+.mkt-search{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:11px 16px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.mkt-search:focus{border-color:rgba(79,142,247,0.4)}
+.mkt-search::placeholder{color:var(--muted)}
+.mkt-cats{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.mkt-cats::-webkit-scrollbar{display:none}
+.mkt-cat{flex-shrink:0;padding:6px 13px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);transition:all 0.15s}
+.mkt-cat.on{background:rgba(79,142,247,0.12);border-color:rgba(79,142,247,0.35);color:var(--blue)}
+.mkt-sym-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:1px}
+.mkt-sym-item{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;border-radius:10px;cursor:pointer;transition:background 0.15s}
+.mkt-sym-item:active{background:rgba(255,255,255,0.05)}
+.mkt-sym-left{display:flex;flex-direction:column;gap:2px}
+.mkt-sym-ticker{font-size:13px;font-weight:600}
+.mkt-sym-name{font-size:11px;color:var(--muted)}
+.mkt-sym-add{width:28px;height:28px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.25);color:var(--blue);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.mkt-sym-add.added{background:rgba(15,244,198,0.08);border-color:rgba(15,244,198,0.25);color:var(--teal);font-size:13px}
 </style>
-<!-- Eruda mobile console — TESTING ONLY, remove before launch -->
+<!-- Eruda mobile console — TESTING ONLY -->
 <script>
 function toggleEruda() {
   if(typeof eruda !== 'undefined' && eruda._isInit) {
@@ -688,9 +751,9 @@ function toggleEruda() {
       <div class="bnav-icon" style="width:22px;height:22px"><svg width="22" height="22" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="96" height="96" rx="22" fill="#1a1a2e"/><rect x="10" y="10" width="76" height="76" rx="16" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-opacity="0.4"/><rect x="20" y="20" width="56" height="56" rx="12" fill="none" stroke="url(#ts-grad-bnav)" stroke-width="5"/><circle cx="48" cy="48" r="7" fill="#0ff4c6"/><defs><linearGradient id="ts-grad-bnav" x1="10" y1="10" x2="86" y2="86" gradientUnits="userSpaceOnUse"><stop stop-color="#4f8ef7"/><stop offset="1" stop-color="#0ff4c6"/></linearGradient></defs></svg></div>
       <span class="bnav-label">TabSpace</span>
     </button>
-    <button class="bnav-item" id="bn-sports" onclick="bnav('sports')">
-      <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 2 C9 2 6 5 6 9 C6 13 9 16 9 16"/><path d="M9 2 C9 2 12 5 12 9 C12 13 9 16 9 16"/><line x1="2" y1="9" x2="16" y2="9"/></svg></div>
-      <span class="bnav-label">Sports</span>
+    <button class="bnav-item" id="bn-markets" onclick="bnav('markets')">
+      <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,13 5,9 8,11 11,6 14,8 16,5"/><polyline points="13,5 16,5 16,8"/></svg></div>
+      <span class="bnav-label">Markets</span>
     </button>
     <button class="bnav-item" id="bn-saved" onclick="bnav('saved')">
       <div class="bnav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="bnav-svg" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h12v13l-6-3.5L3 16V3z"/></svg></div>
@@ -1168,6 +1231,9 @@ function launchApp() {
   renderTicker();
   startTickerFluctuations();
   updateBreakingBanner();
+  // Check deep link BEFORE RSS — ensures pendingDeepLink set before cache callback fires
+  checkDeepLink();
+
   // fetch real RSS in background — replaces seed when ready
   fetchAndApplyRSS(function(source, count) {
     if(source === 'live' || source === 'cache') {
@@ -1178,7 +1244,7 @@ function launchApp() {
       if(source === 'live' && count) {
         showToast(count + ' fresh stories loaded');
       }
-      // Consume any pending deep link now that real stories are loaded
+      // Consume pending deep link now that stories are loaded
       consumePendingDeepLink();
     }
   });
@@ -1196,31 +1262,8 @@ function launchApp() {
   showInstallPromptIfNeeded();
   // Init OneSignal (no prompt yet — prompt shown after onboarding)
   initOneSignal();
-  // Check for deep link story
-  checkDeepLink();
-  // Reveal app — prevents flash of wrong screen before JS init
   document.getElementById('app').style.opacity = '1';
 }
-
-// ── Background resume handler ──
-// When iOS resumes PWA from background, URL may have changed (notification tap)
-// Page doesn't reload — must re-check URL params on visibility change
-(function(){
-  var lastUrl = window.location.href;
-  document.addEventListener('visibilitychange', function() {
-    if(document.visibilityState === 'visible') {
-      var currentUrl = window.location.href;
-      // Only act if URL has changed since last check
-      if(currentUrl !== lastUrl) {
-        lastUrl = currentUrl;
-        // Re-read deep link params with fresh URL
-        checkDeepLink();
-        // Consume immediately — RSS already loaded
-        setTimeout(function(){ consumePendingDeepLink(); }, 300);
-      }
-    }
-  });
-})();
 
 function updateBreakingBanner() {
   if(bbDismissed) return;
@@ -1260,22 +1303,19 @@ function switchView(v) {
 }
 
 function bnav(v) {
-  // TabSpace is a launcher — navigates away, never activates a view
-  if(v === 'tabspace') {
-    window.location.href = 'https://apps.cybertabx.com';
-    return;
-  }
-  // Sports — coming soon
-  if(v === 'sports') {
-    ['feed','trending','saved','sports'].forEach(function(name){
+  if(v === 'tabspace') { window.location.href = 'https://apps.cybertabx.com'; return; }
+  if(v === 'markets') {
+    ['feed','trending','saved','markets'].forEach(function(name){
       var el = document.getElementById('bn-'+name);
-      if(el) el.classList.toggle('on', name==='sports');
+      if(el) el.classList.toggle('on', name==='markets');
     });
-    showToast('Sports coming soon 🏏');
+    openMarkets();
     return;
   }
-  // Feed / Trending / Saved
-  ['feed','trending','saved','sports'].forEach(function(name){
+  // Close markets if navigating to feed/trending/saved
+  var mktEl = document.getElementById('markets');
+  if(mktEl && mktEl.classList.contains('on')) { closeMarkets(); }
+  ['feed','trending','saved','markets'].forEach(function(name){
     var el = document.getElementById('bn-'+name);
     if(el) el.classList.toggle('on', name===v);
   });
@@ -1871,7 +1911,8 @@ function rdrShare() {
 // DIGEST VIEW — shows top 3 stories scrollable
 // Called when notification has ?digest= param
 // ═══════════════════════════════════════════
-function showDigestView(urls) {
+function showDigestView(urls, titlesMap) {
+  // titlesMap is optional object: { url: {title, src} } for stories not in feed
   // Update header
   document.getElementById('rdr-dom').textContent = 'Morning Digest';
 
@@ -1906,6 +1947,8 @@ function showDigestView(urls) {
     var story = STORIES.find(function(s){
       return s.url === url || s.url.indexOf(url) > -1 || url.indexOf(s.url) > -1;
     });
+    // Get title/src from titlesMap if available (for Tier 2)
+    var notifMeta = (titlesMap && titlesMap[url]) || null;
 
     var slot = document.createElement('div');
     slot.className = 'rdr-ds';
@@ -1985,20 +2028,36 @@ function showDigestView(urls) {
       slot.appendChild(body);
 
     } else {
-      // Minimal slot — story not in feed
+      // Tier 2 or 3 — story not in feed
       var domain = url.replace('https://','').replace('http://','').split('/')[0];
-      var minWrap = document.createElement('div');
-      minWrap.className = 'rdr-ds-minimal';
-      var minDomain = document.createElement('div');
-      minDomain.className = 'rdr-ds-minimal-domain';
-      minDomain.textContent = domain;
-      var minBtn = document.createElement('button');
-      minBtn.className = 'rdr-ds-minimal-btn';
-      minBtn.textContent = 'Read on ' + domain + ' →';
-      minBtn.addEventListener('click', (function(u){ return function(){ window.open(u, '_blank'); }; })(url));
-      minWrap.appendChild(minDomain);
-      minWrap.appendChild(minBtn);
-      slot.appendChild(minWrap);
+      var fallbackBody = document.createElement('div');
+      fallbackBody.className = 'rdr-ds-body';
+
+      if(notifMeta && notifMeta.title) {
+        // Tier 2 — has title from notification
+        var metaSrc = document.createElement('div');
+        metaSrc.className = 'rdr-ds-meta';
+        metaSrc.innerHTML = '<span class="rdr-ds-src">' + (notifMeta.src || domain) + '</span>';
+        fallbackBody.appendChild(metaSrc);
+
+        var hl = document.createElement('div');
+        hl.className = 'rdr-ds-hl';
+        hl.textContent = notifMeta.title;
+        fallbackBody.appendChild(hl);
+      } else {
+        // Tier 3 — domain only
+        var domainEl = document.createElement('div');
+        domainEl.className = 'rdr-ds-minimal-domain';
+        domainEl.textContent = domain;
+        fallbackBody.appendChild(domainEl);
+      }
+
+      var readBtn = document.createElement('button');
+      readBtn.className = 'rdr-ds-btn';
+      readBtn.textContent = 'Read on ' + (notifMeta && notifMeta.src ? notifMeta.src : domain) + ' →';
+      readBtn.addEventListener('click', (function(u){ return function(){ window.open(u, '_blank'); }; })(url));
+      fallbackBody.appendChild(readBtn);
+      slot.appendChild(fallbackBody);
     }
 
     container.appendChild(slot);
@@ -2010,6 +2069,13 @@ function showDigestView(urls) {
       container.appendChild(div);
     }
   });
+
+  // Footer — return to feed hint
+  var footer = document.createElement('div');
+  footer.style.cssText = 'padding:24px 18px;text-align:center;cursor:pointer;';
+  footer.innerHTML = '<span style="font-size:12px;color:rgba(255,255,255,0.3);border-bottom:0.5px solid rgba(255,255,255,0.1);padding-bottom:4px;">Back to feed for 30+ stories</span>';
+  footer.addEventListener('click', function(){ closeReader(); });
+  container.appendChild(footer);
 }
 
 function digestRead(storyId) {
@@ -2066,6 +2132,42 @@ function closeReader() {
   document.getElementById('shell').classList.add('on');
   // feedCur unchanged — user returns to exact same card
 }
+
+// ── Cache API notification handler ──
+// SW writes notification URL to Cache API (persists across SW restarts)
+// Page reads from Cache on load and visibilitychange
+var TN_NOTIF_CACHE = 'tn-notif-v1';
+var TN_NOTIF_KEY = '/pending-notif';
+
+function checkCacheNotif() {
+  if(!('caches' in window)) return;
+  caches.open(TN_NOTIF_CACHE).then(function(cache) {
+    cache.match(TN_NOTIF_KEY).then(function(response) {
+      if(!response) return;
+      response.text().then(function(url) {
+        if(!url) return;
+        cache.delete(TN_NOTIF_KEY);
+        setTimeout(function(){ handleNotifUrl(url); }, 200);
+      });
+    });
+  });
+}
+
+// Check on page load — handles closed case + navigate case
+checkCacheNotif();
+
+// Check on visibilitychange — handles backgrounded case
+document.addEventListener('visibilitychange', function() {
+  if(document.visibilityState === 'visible') {
+    checkCacheNotif();
+    // URL params fallback
+    var currentUrl = window.location.href;
+    if(currentUrl.indexOf('?open=') > -1 || currentUrl.indexOf('?digest=') > -1) {
+      checkDeepLink();
+      setTimeout(function(){ consumePendingDeepLink(); }, 300);
+    }
+  }
+});
 
 // openExt replaced by rdrOpenExternal
 
@@ -5689,7 +5791,6 @@ function quickObSkip() {
   var params = parseURLParams();
   var fromTabFin = params.ref === 'tabfin';
   var hasProfile = !!(P.loc || P.focus.length);
-  // Reveal app immediately — correct screen already set above
   document.getElementById('app').style.opacity = '1';
 
   // Scenario 2 + 4: returning user with saved profile
@@ -5731,7 +5832,6 @@ function quickObSkip() {
 
   // Scenario 1: brand new user, direct visit — full onboarding (already showing sc-ob)
   // sc-ob starts with class="scr on" by default — nothing to do
-
 })();
 
 
@@ -5803,9 +5903,7 @@ console.log('%c TabNews v3.13 ready. Run testTickerFetch() to test live prices.'
 // ═══════════════════════════════════════════
 var isInShell = (window.top !== window.self);
 
-// ── TabSpace source detection ──
-// Detects if user navigated from TabSpace via ?source=tabspace
-// Persists in sessionStorage for the tab's lifetime
+// TabSpace source detection
 (function(){
   var fromTS = new URLSearchParams(window.location.search).get('source') === 'tabspace';
   if(fromTS) sessionStorage.setItem('from_tabspace', 'true');
@@ -5835,52 +5933,13 @@ function initOneSignal() {
       serviceWorkerParam: { scope: '/' },
     });
 
-    // ── Notification click handler ──
-    // Fires in all cases: app closed, backgrounded, or foreground
-    // Receives full notification data — no URL inspection needed
+    // OneSignal click listener — fires on iOS when notification tapped
+    // Backup handler alongside SW postMessage
     OneSignal.Notifications.addEventListener('click', function(event) {
       try {
         var launchUrl = event.notification.launchURL || '';
         if(!launchUrl) return;
-
-        // Parse params from notification URL
-        var urlParts = launchUrl.split('?');
-        if(urlParts.length < 2) return;
-        var params = new URLSearchParams(urlParts[1]);
-
-        // Digest notification
-        var digestParam = params.get('digest');
-        if(digestParam) {
-          var digestUrls = digestParam.split('||');
-          if(digestUrls.length > 0) {
-            // Wait for RSS then show digest
-            var attempts = 0;
-            var interval = setInterval(function(){
-              attempts++;
-              if(STORIES.length > 0 || attempts > 20) {
-                clearInterval(interval);
-                showDigestView(digestUrls);
-              }
-            }, 300);
-          }
-          return;
-        }
-
-        // Single story notification
-        var openUrl = params.get('open');
-        if(!openUrl) return;
-        var targetUrl = decodeURIComponent(openUrl);
-        var title = params.get('title') || null;
-        var src   = params.get('src')   || null;
-        var thumb = params.get('thumb') || null;
-
-        if(title) {
-          // Has metadata — show bridge screen immediately
-          showDirectBridge(targetUrl, title, src, thumb);
-        } else {
-          // No metadata — wait for RSS then try story match
-          openDeepLinkUrl(targetUrl);
-        }
+        handleNotifUrl(launchUrl);
       } catch(err) {}
     });
   });
@@ -5910,28 +5969,35 @@ function checkDeepLink() {
     // Check for digest param first
     var digestParam = params.get('digest');
     if(digestParam) {
-      var digestUrls = digestParam.split('||');
-      if(digestUrls.length > 0) {
-        pendingDeepLink = { type: 'digest', urls: digestUrls };
+      var dEntries = digestParam.split('||');
+      var dUrls = [];
+      var dTitlesMap = {};
+      dEntries.forEach(function(entry) {
+        var parts = entry.split('~');
+        var dUrl = parts[0] ? decodeURIComponent(parts[0]) : '';
+        var dTitle = parts[1] ? decodeURIComponent(parts[1]) : null;
+        var dSrc = parts[2] ? decodeURIComponent(parts[2]) : null;
+        if(dUrl) {
+          dUrls.push(dUrl);
+          if(dTitle) dTitlesMap[dUrl] = { title: dTitle, src: dSrc };
+        }
+      });
+      if(dUrls.length > 0) {
+        pendingDeepLink = { type: 'digest', urls: dUrls, titlesMap: dTitlesMap };
       }
       return;
     }
 
-    // Check for single story ?open= param
+    // Single story
     var openUrl = params.get('open');
     if(!openUrl) return;
     var targetUrl = decodeURIComponent(openUrl);
-
-    // Read optional story metadata passed in URL params
     var title = params.get('title') || null;
-    var src   = params.get('src')   || null;
+    var src = params.get('src') || null;
     var thumb = params.get('thumb') || null;
-
     if(title) {
-      // We have metadata — show bridge screen immediately, no STORIES lookup needed
       pendingDeepLink = { type: 'direct', url: targetUrl, title: title, src: src, thumb: thumb };
     } else {
-      // No metadata — try STORIES lookup (legacy fallback)
       pendingDeepLink = { type: 'open', url: targetUrl };
     }
   } catch(e) {}
@@ -5940,41 +6006,81 @@ function checkDeepLink() {
 function consumePendingDeepLink() {
   if(!pendingDeepLink) return;
   var link = pendingDeepLink;
-  pendingDeepLink = null; // clear immediately — prevent double fire
-
+  pendingDeepLink = null;
   if(link.type === 'direct') {
     showDirectBridge(link.url, link.title, link.src, link.thumb);
   } else if(link.type === 'digest') {
-    showDigestView(link.urls);
+    showDigestView(link.urls, link.titlesMap);
   } else if(link.type === 'open') {
     openDeepLinkUrl(link.url);
   }
 }
 
-function showDirectBridge(url, title, src, thumb) {
-  // Ensure shell is visible
-  document.getElementById('shell').classList.add('on');
-  rdrUrl = url;
+// Central handler for notification URLs — used by SW postMessage and click listener
+function handleNotifUrl(launchUrl) {
+  try {
+    if(!launchUrl) return;
+    var urlParts = launchUrl.split('?');
+    if(urlParts.length < 2) return;
+    var params = new URLSearchParams(urlParts[1]);
 
-  // Set header domain
+    var digestParam = params.get('digest');
+    if(digestParam) {
+      var digestEntries = digestParam.split('||');
+      var digestUrls = [];
+      var titlesMap = {};
+      digestEntries.forEach(function(entry) {
+        var parts = entry.split('~');
+        var url = decodeURIComponent(parts[0] || '');
+        var title = parts[1] ? decodeURIComponent(parts[1]) : null;
+        var src = parts[2] ? decodeURIComponent(parts[2]) : null;
+        if(url) {
+          digestUrls.push(url);
+          if(title) titlesMap[url] = { title: title, src: src };
+        }
+      });
+      if(digestUrls.length > 0) {
+        var attempts = 0;
+        var interval = setInterval(function(){
+          attempts++;
+          if(STORIES.length > 0 || attempts > 20) {
+            clearInterval(interval);
+            showDigestView(digestUrls, titlesMap);
+          }
+        }, 300);
+      }
+      return;
+    }
+
+    var openUrl = params.get('open');
+    if(!openUrl) return;
+    var targetUrl = decodeURIComponent(openUrl);
+    var title = params.get('title') || null;
+    var src   = params.get('src')   || null;
+    var thumb = params.get('thumb') || null;
+
+    if(title) {
+      showDirectBridge(targetUrl, title, src, thumb);
+    } else {
+      openDeepLinkUrl(targetUrl);
+    }
+  } catch(e) {}
+}
+
+function showDirectBridge(url, title, src, thumb) {
+  rdrUrl = url;
   var domain = url.replace('https://','').replace('http://','').split('/')[0];
   document.getElementById('rdr-dom').textContent = domain;
-
-  // Reset reader states
   document.getElementById('rdr-loading').style.display = 'none';
   document.getElementById('rdr-iframe-wrap').style.display = 'none';
   document.getElementById('rdr-digest').style.display = 'none';
   document.getElementById('rdr-fallback').style.display = 'flex';
-
-  // Populate with notification data
   document.getElementById('rdr-fb-chip').textContent = '';
   document.getElementById('rdr-fb-chip').className = 'ctag';
   document.getElementById('rdr-fb-time').textContent = src || '';
   document.getElementById('rdr-fb-hl').textContent = title || domain;
   document.getElementById('rdr-fb-insight').style.display = 'none';
   document.getElementById('rdr-fb-src').textContent = src || domain;
-
-  // Thumbnail
   var imgWrap = document.getElementById('rdr-fb-img-wrap');
   var imgEl = document.getElementById('rdr-fb-img');
   if(thumb) {
@@ -5984,8 +6090,6 @@ function showDirectBridge(url, title, src, thumb) {
   } else {
     imgWrap.style.display = 'none';
   }
-
-  // Show reader
   document.getElementById('shell').classList.remove('on');
   document.getElementById('reader').classList.add('on');
 }
@@ -6052,9 +6156,460 @@ function showMinimalBridge(url) {
   document.getElementById('shell').classList.remove('on');
   document.getElementById('reader').classList.add('on');
 }
+
+
+// ═══════════════════════════════════════════
+// MARKETS
+// ═══════════════════════════════════════════
+
+// Symbol database
+var M_SYMBOLS = [
+  // India Stocks
+  {ticker:'NSE:RELIANCE',name:'Reliance Industries',cat:'india'},
+  {ticker:'NSE:TCS',name:'Tata Consultancy Services',cat:'india'},
+  {ticker:'NSE:INFY',name:'Infosys',cat:'india'},
+  {ticker:'NSE:HDFCBANK',name:'HDFC Bank',cat:'india'},
+  {ticker:'NSE:ICICIBANK',name:'ICICI Bank',cat:'india'},
+  {ticker:'NSE:HINDUNILVR',name:'Hindustan Unilever',cat:'india'},
+  {ticker:'NSE:ITC',name:'ITC Limited',cat:'india'},
+  {ticker:'NSE:BAJFINANCE',name:'Bajaj Finance',cat:'india'},
+  {ticker:'NSE:SBIN',name:'State Bank of India',cat:'india'},
+  {ticker:'NSE:BHARTIARTL',name:'Bharti Airtel',cat:'india'},
+  {ticker:'NSE:WIPRO',name:'Wipro',cat:'india'},
+  {ticker:'NSE:HCLTECH',name:'HCL Technologies',cat:'india'},
+  {ticker:'NSE:ASIANPAINT',name:'Asian Paints',cat:'india'},
+  {ticker:'NSE:MARUTI',name:'Maruti Suzuki',cat:'india'},
+  {ticker:'NSE:TATAMOTORS',name:'Tata Motors',cat:'india'},
+  {ticker:'NSE:ADANIENT',name:'Adani Enterprises',cat:'india'},
+  {ticker:'NSE:KOTAKBANK',name:'Kotak Mahindra Bank',cat:'india'},
+  {ticker:'NSE:LT',name:'Larsen and Toubro',cat:'india'},
+  {ticker:'NSE:AXISBANK',name:'Axis Bank',cat:'india'},
+  {ticker:'NSE:SUNPHARMA',name:'Sun Pharma',cat:'india'},
+  {ticker:'NSE:ULTRACEMCO',name:'UltraTech Cement',cat:'india'},
+  {ticker:'NSE:TITAN',name:'Titan Company',cat:'india'},
+  {ticker:'NSE:BAJAJFINSV',name:'Bajaj Finserv',cat:'india'},
+  {ticker:'NSE:POWERGRID',name:'Power Grid Corp',cat:'india'},
+  {ticker:'NSE:NTPC',name:'NTPC',cat:'india'},
+  {ticker:'NSE:ONGC',name:'ONGC',cat:'india'},
+  {ticker:'NSE:DRREDDY',name:'Dr Reddys Labs',cat:'india'},
+  {ticker:'NSE:CIPLA',name:'Cipla',cat:'india'},
+  {ticker:'NSE:JSWSTEEL',name:'JSW Steel',cat:'india'},
+  {ticker:'NSE:NESTLEIND',name:'Nestle India',cat:'india'},
+  {ticker:'NSE:TECHM',name:'Tech Mahindra',cat:'india'},
+  {ticker:'NSE:COALINDIA',name:'Coal India',cat:'india'},
+  {ticker:'NSE:TATASTEEL',name:'Tata Steel',cat:'india'},
+  {ticker:'NSE:ZOMATO',name:'Zomato',cat:'india'},
+  {ticker:'NSE:APOLLOHOSP',name:'Apollo Hospitals',cat:'india'},
+  // US Stocks
+  {ticker:'NASDAQ:AAPL',name:'Apple Inc',cat:'us'},
+  {ticker:'NASDAQ:MSFT',name:'Microsoft',cat:'us'},
+  {ticker:'NASDAQ:GOOGL',name:'Alphabet Google',cat:'us'},
+  {ticker:'NASDAQ:AMZN',name:'Amazon',cat:'us'},
+  {ticker:'NASDAQ:NVDA',name:'NVIDIA',cat:'us'},
+  {ticker:'NASDAQ:META',name:'Meta Platforms',cat:'us'},
+  {ticker:'NASDAQ:TSLA',name:'Tesla',cat:'us'},
+  {ticker:'NYSE:JPM',name:'JPMorgan Chase',cat:'us'},
+  {ticker:'NYSE:JNJ',name:'Johnson and Johnson',cat:'us'},
+  {ticker:'NYSE:V',name:'Visa',cat:'us'},
+  {ticker:'NYSE:WMT',name:'Walmart',cat:'us'},
+  {ticker:'NYSE:XOM',name:'ExxonMobil',cat:'us'},
+  {ticker:'NYSE:MA',name:'Mastercard',cat:'us'},
+  {ticker:'NYSE:BAC',name:'Bank of America',cat:'us'},
+  {ticker:'NYSE:KO',name:'Coca-Cola',cat:'us'},
+  {ticker:'NYSE:PG',name:'Procter and Gamble',cat:'us'},
+  {ticker:'NASDAQ:AMD',name:'AMD',cat:'us'},
+  {ticker:'NASDAQ:INTC',name:'Intel',cat:'us'},
+  {ticker:'NASDAQ:NFLX',name:'Netflix',cat:'us'},
+  {ticker:'NYSE:DIS',name:'Walt Disney',cat:'us'},
+  {ticker:'NYSE:GS',name:'Goldman Sachs',cat:'us'},
+  {ticker:'NYSE:IBM',name:'IBM',cat:'us'},
+  // Indices
+  {ticker:'NSE:NIFTY',name:'NIFTY 50',cat:'indices'},
+  {ticker:'BSE:SENSEX',name:'BSE SENSEX',cat:'indices'},
+  {ticker:'FOREXCOM:SPXUSD',name:'S&P 500',cat:'indices'},
+  {ticker:'FOREXCOM:NSXUSD',name:'Nasdaq 100',cat:'indices'},
+  {ticker:'FOREXCOM:DJI',name:'Dow Jones',cat:'indices'},
+  {ticker:'INDEX:FTSE',name:'FTSE 100',cat:'indices'},
+  {ticker:'XETR:DAX',name:'DAX',cat:'indices'},
+  {ticker:'INDEX:NI225',name:'Nikkei 225',cat:'indices'},
+  {ticker:'INDEX:HSI',name:'Hang Seng',cat:'indices'},
+  // Commodities
+  {ticker:'COMEX:GC1!',name:'Gold',cat:'commodity'},
+  {ticker:'COMEX:SI1!',name:'Silver',cat:'commodity'},
+  {ticker:'NYMEX:CL1!',name:'Crude Oil WTI',cat:'commodity'},
+  {ticker:'ICEEUR:BRN1!',name:'Brent Crude',cat:'commodity'},
+  {ticker:'NYMEX:NG1!',name:'Natural Gas',cat:'commodity'},
+  {ticker:'COMEX:HG1!',name:'Copper',cat:'commodity'},
+  {ticker:'COMEX:PL1!',name:'Platinum',cat:'commodity'},
+  // Crypto
+  {ticker:'BITSTAMP:BTCUSD',name:'Bitcoin',cat:'crypto'},
+  {ticker:'BITSTAMP:ETHUSD',name:'Ethereum',cat:'crypto'},
+  {ticker:'BINANCE:SOLUSDT',name:'Solana',cat:'crypto'},
+  {ticker:'BINANCE:BNBUSDT',name:'BNB',cat:'crypto'},
+  {ticker:'BINANCE:XRPUSDT',name:'XRP',cat:'crypto'},
+  {ticker:'BINANCE:ADAUSDT',name:'Cardano',cat:'crypto'},
+  {ticker:'BINANCE:DOGEUSDT',name:'Dogecoin',cat:'crypto'},
+  {ticker:'BINANCE:AVAXUSDT',name:'Avalanche',cat:'crypto'},
+  {ticker:'BINANCE:LINKUSDT',name:'Chainlink',cat:'crypto'},
+  {ticker:'BINANCE:LTCUSDT',name:'Litecoin',cat:'crypto'},
+  // Forex
+  {ticker:'FX:USDINR',name:'USD / Indian Rupee',cat:'forex'},
+  {ticker:'FX:USDAED',name:'USD / UAE Dirham',cat:'forex'},
+  {ticker:'FX:USDPKR',name:'USD / Pakistani Rupee',cat:'forex'},
+  {ticker:'FX:EURUSD',name:'Euro / USD',cat:'forex'},
+  {ticker:'FX:GBPUSD',name:'British Pound / USD',cat:'forex'},
+  {ticker:'FX:USDJPY',name:'USD / Japanese Yen',cat:'forex'},
+  {ticker:'FX:USDSGD',name:'USD / Singapore Dollar',cat:'forex'},
+  {ticker:'FX:USDCAD',name:'USD / Canadian Dollar',cat:'forex'},
+  {ticker:'FX:AUDUSD',name:'Australian Dollar / USD',cat:'forex'},
+  {ticker:'FX:EURINR',name:'Euro / Indian Rupee',cat:'forex'},
+  {ticker:'FX:GBPINR',name:'British Pound / Indian Rupee',cat:'forex'},
+  {ticker:'FX:USDCNY',name:'USD / Chinese Yuan',cat:'forex'},
+];
+
+var M_DEFAULT = [
+  {ticker:'BITSTAMP:BTCUSD',name:'Bitcoin'},
+  {ticker:'NSE:NIFTY',name:'NIFTY 50'},
+  {ticker:'FOREXCOM:SPXUSD',name:'S&P 500'},
+  {ticker:'COMEX:GC1!',name:'Gold'},
+  {ticker:'FX:USDINR',name:'USD / INR'},
+  {ticker:'NSE:RELIANCE',name:'Reliance Industries'},
+  {ticker:'NASDAQ:AAPL',name:'Apple Inc'},
+];
+
+var mWatchlist = [];
+var mActiveCat = 'all';
+var mActiveSubTab = 'watchlist';
+var mInited = {watchlist:false, overview:false, forex:false, crypto:false};
+var mMarketsOpen = false;
+
+// Load watchlist from localStorage
+(function(){
+  try {
+    var s = localStorage.getItem('tm-watchlist-v1');
+    mWatchlist = s ? JSON.parse(s) : JSON.parse(JSON.stringify(M_DEFAULT));
+  } catch(e) {
+    mWatchlist = JSON.parse(JSON.stringify(M_DEFAULT));
+  }
+})();
+
+function mSaveWatchlist() {
+  try { localStorage.setItem('tm-watchlist-v1', JSON.stringify(mWatchlist)); } catch(e){}
+}
+
+// ── Open / Close Markets ──
+function openMarkets() {
+  mMarketsOpen = true;
+  document.getElementById('shell').classList.remove('on');
+  document.getElementById('markets').classList.add('on');
+  // Init watchlist on first open
+  if(!mInited.watchlist) {
+    mInited.watchlist = true;
+    mRenderWatchlist();
+  }
+}
+
+function closeMarkets() {
+  mMarketsOpen = false;
+  document.getElementById('markets').classList.remove('on');
+  document.getElementById('shell').classList.add('on');
+  // Reset nav
+  ['feed','trending','saved','markets'].forEach(function(name){
+    var el = document.getElementById('bn-'+name);
+    if(el) el.classList.toggle('on', name==='feed');
+  });
+  // Return to feed view
+  switchView('feed');
+  bnav('feed');
+}
+
+// ── Sub tabs ──
+function mSetTab(tab, el) {
+  mActiveSubTab = tab;
+  document.querySelectorAll('.mkt-sub-tab').forEach(function(t){ t.classList.remove('on'); });
+  el.classList.add('on');
+  document.querySelectorAll('.mkt-view').forEach(function(v){ v.classList.remove('on'); });
+  document.getElementById('mkt-view-'+tab).classList.add('on');
+  // Lazy init
+  if(!mInited[tab]) {
+    mInited[tab] = true;
+    mInitTab(tab);
+  }
+}
+
+function mInitTab(tab) {
+  if(tab === 'watchlist') { mRenderWatchlist(); return; }
+  if(tab === 'overview') {
+    mCreateWidget('mkt-overview-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js', {
+      colorTheme:'dark', dateRange:'12M', showChart:true, locale:'en',
+      largeChartUrl:'', isTransparent:false, showSymbolLogo:true, showFloatingTooltip:false,
+      width:'100%', height:'100%',
+      plotLineColorGrowing:'rgba(15,244,198,1)', plotLineColorFalling:'rgba(255,80,80,1)',
+      gridLineColor:'rgba(255,255,255,0.06)', scaleFontColor:'rgba(255,255,255,0.4)',
+      belowLineFillColorGrowing:'rgba(15,244,198,0.05)', belowLineFillColorFalling:'rgba(255,80,80,0.05)',
+      belowLineFillColorGrowingBottom:'rgba(15,244,198,0)', belowLineFillColorFallingBottom:'rgba(255,80,80,0)',
+      symbolActiveColor:'rgba(79,142,247,0.1)',
+      tabs:[
+        {title:'Indices',symbols:[
+          {s:'NSE:NIFTY',d:'NIFTY 50'},{s:'BSE:SENSEX',d:'SENSEX'},
+          {s:'FOREXCOM:SPXUSD',d:'S&P 500'},{s:'FOREXCOM:NSXUSD',d:'Nasdaq'},
+          {s:'FOREXCOM:DJI',d:'Dow Jones'},{s:'INDEX:FTSE',d:'FTSE 100'}
+        ],originalTitle:'Indices'},
+        {title:'Commodities',symbols:[
+          {s:'COMEX:GC1!',d:'Gold'},{s:'NYMEX:CL1!',d:'Crude Oil'},
+          {s:'COMEX:SI1!',d:'Silver'},{s:'NYMEX:NG1!',d:'Natural Gas'}
+        ],originalTitle:'Commodities'},
+        {title:'Forex',symbols:[
+          {s:'FX:USDINR',d:'USD/INR'},{s:'FX:USDAED',d:'USD/AED'},
+          {s:'FX:EURUSD',d:'EUR/USD'},{s:'FX:GBPUSD',d:'GBP/USD'}
+        ],originalTitle:'Forex'},
+        {title:'Crypto',symbols:[
+          {s:'BITSTAMP:BTCUSD',d:'Bitcoin'},{s:'BITSTAMP:ETHUSD',d:'Ethereum'},
+          {s:'BINANCE:SOLUSDT',d:'Solana'},{s:'BINANCE:BNBUSDT',d:'BNB'}
+        ],originalTitle:'Crypto'}
+      ]
+    });
+    return;
+  }
+  if(tab === 'forex') {
+    mCreateWidget('mkt-forex-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js', {
+      title:'Forex',
+      symbols:[
+        {name:'FX:USDINR',displayName:'USD / INR'},
+        {name:'FX:USDAED',displayName:'USD / AED'},
+        {name:'FX:USDPKR',displayName:'USD / PKR'},
+        {name:'FX:EURUSD',displayName:'EUR / USD'},
+        {name:'FX:GBPUSD',displayName:'GBP / USD'},
+        {name:'FX:USDJPY',displayName:'USD / JPY'},
+        {name:'FX:USDSGD',displayName:'USD / SGD'},
+        {name:'FX:EURINR',displayName:'EUR / INR'},
+        {name:'FX:GBPINR',displayName:'GBP / INR'},
+        {name:'FX:USDCNY',displayName:'USD / CNY'}
+      ],
+      colorTheme:'dark', isTransparent:false, locale:'en', width:'100%', height:'100%'
+    });
+    return;
+  }
+  if(tab === 'crypto') {
+    mCreateWidget('mkt-crypto-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js', {
+      width:'100%', height:'100%',
+      defaultColumn:'overview', screener_type:'crypto_mkt',
+      displayCurrency:'USD', colorTheme:'dark', locale:'en', isTransparent:false
+    });
+  }
+}
+
+// ── Core widget creator using createElement (not innerHTML) ──
+function mCreateWidget(wrapperId, scriptSrc, config) {
+  var wrap = document.getElementById(wrapperId);
+  wrap.innerHTML = '';
+  var container = document.createElement('div');
+  container.className = 'tradingview-widget-container';
+  container.style.cssText = 'height:100%;width:100%';
+  var inner = document.createElement('div');
+  inner.className = 'tradingview-widget-container__widget';
+  inner.style.cssText = 'height:calc(100% - 28px);width:100%';
+  container.appendChild(inner);
+  var attr = document.createElement('div');
+  attr.className = 'tradingview-widget-copyright';
+  attr.style.cssText = 'font-size:10px;padding:5px 10px;color:rgba(255,255,255,0.2)';
+  attr.innerHTML = '<a href="https://www.tradingview.com/" rel="noopener" target="_blank" style="color:#4f8ef7">TradingView</a>';
+  container.appendChild(attr);
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = scriptSrc;
+  script.async = true;
+  script.innerHTML = JSON.stringify(config);
+  container.appendChild(script);
+  wrap.appendChild(container);
+}
+
+// ── Watchlist render ──
+function mRenderWatchlist() {
+  if(!mWatchlist.length) {
+    document.getElementById('mkt-watchlist-wrap').innerHTML = '<div class="mkt-empty"><div class="mkt-empty-icon">📊</div><div class="mkt-empty-title">Your watchlist is empty</div><div class="mkt-empty-sub">Tap + to add stocks, indices,<br>crypto or forex</div></div>';
+    return;
+  }
+  mCreateWidget('mkt-watchlist-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js', {
+    title:'My Watchlist',
+    symbols: mWatchlist.map(function(w){ return {name:w.ticker, displayName:w.name}; }),
+    colorTheme:'dark', isTransparent:false, locale:'en', width:'100%', height:'100%'
+  });
+}
+
+// ── Chart ──
+function mOpenChart(ticker, name) {
+  document.getElementById('mkt-chart-sym').textContent = ticker.split(':').pop();
+  document.getElementById('mkt-chart-name').textContent = name;
+  mCreateWidget('mkt-chart-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js', {
+    autosize:true, symbol:ticker, interval:'D', timezone:'Asia/Dubai',
+    theme:'dark', style:'1', locale:'en',
+    allow_symbol_change:true, save_image:false,
+    hide_top_toolbar:false, withdateranges:true
+  });
+  document.getElementById('mkt-chart').classList.add('on');
+}
+
+function mCloseChart() {
+  document.getElementById('mkt-chart').classList.remove('on');
+  document.getElementById('mkt-chart-wrap').innerHTML = '';
+}
+
+// ── Sheet ──
+function mOpenSheet() {
+  document.getElementById('mkt-sheet').classList.add('on');
+  document.getElementById('mkt-search').value = '';
+  mFilterSymbols('');
+  setTimeout(function(){ document.getElementById('mkt-search').focus(); }, 300);
+}
+function mCloseSheet() {
+  document.getElementById('mkt-sheet').classList.remove('on');
+}
+function mSheetOverlayClick(e) {
+  if(e.target.id === 'mkt-sheet') mCloseSheet();
+}
+function mSetCat(cat, el) {
+  mActiveCat = cat;
+  document.querySelectorAll('.mkt-cat').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  mFilterSymbols(document.getElementById('mkt-search').value);
+}
+function mFilterSymbols(q) {
+  var list = document.getElementById('mkt-sym-list');
+  var query = (q||'').toLowerCase().trim();
+  var filtered = M_SYMBOLS.filter(function(s){
+    var matchCat = mActiveCat === 'all' || s.cat === mActiveCat;
+    var matchQ = !query || s.ticker.toLowerCase().indexOf(query)>-1 || s.name.toLowerCase().indexOf(query)>-1;
+    return matchCat && matchQ;
+  });
+  if(!filtered.length) {
+    list.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.25);padding:28px 0;font-size:13px">No results</div>';
+    return;
+  }
+  var html = '';
+  filtered.forEach(function(s){
+    var added = mWatchlist.some(function(w){ return w.ticker === s.ticker; });
+    var idKey = s.ticker.replace(/[^a-zA-Z0-9]/g,'_');
+    var sym = s.ticker.split(':').pop();
+    html += '<div class="mkt-sym-item" data-ticker="'+idKey+'" onclick="mTapSymbolById(this)">'
+      +'<div class="mkt-sym-left">'
+      +'<div class="mkt-sym-ticker">'+sym+'</div>'
+      +'<div class="mkt-sym-name">'+s.name+'</div>'
+      +'</div>'
+      +'<div class="mkt-sym-add'+(added?' added':'')+'" id="madd-'+idKey+'" onclick="mToggleAddById(event,this)">'+(added?'&#10003;':'+')+'</div>'
+      +'</div>';
+  });
+  list.innerHTML = html;
+}
+function mGetSymbolByKey(key) {
+  return M_SYMBOLS.find(function(s){ return s.ticker.replace(/[^a-zA-Z0-9]/g,'_') === key; });
+}
+function mTapSymbolById(el) {
+  var key = el.getAttribute('data-ticker');
+  var sym = mGetSymbolByKey(key);
+  if(!sym) return;
+  mCloseSheet();
+  mOpenChart(sym.ticker, sym.name);
+}
+function mToggleAddById(e, btn) {
+  e.stopPropagation();
+  var idKey = btn.id.replace('madd-','');
+  var sym = mGetSymbolByKey(idKey);
+  if(!sym) return;
+  var ticker = sym.ticker;
+  var name = sym.name;
+  var idx = mWatchlist.findIndex(function(w){ return w.ticker === ticker; });
+  if(idx > -1) {
+    mWatchlist.splice(idx, 1);
+    showToast('Removed from watchlist');
+  } else {
+    mWatchlist.push({ticker:ticker, name:name});
+    showToast('Added to watchlist');
+  }
+  mSaveWatchlist();
+  mFilterSymbols(document.getElementById('mkt-search').value);
+  if(mActiveSubTab === 'watchlist' && mMarketsOpen) { mRenderWatchlist(); }
+}
+
+
 </script>
-  <!-- Eruda debug button — TESTING ONLY -->
-  <button onclick="toggleEruda()" style="position:fixed;bottom:80px;left:14px;width:36px;height:36px;border-radius:50%;background:rgba(30,37,53,0.9);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)">⚙️</button>
+  <button onclick="toggleEruda()" style="position:fixed;bottom:80px;left:14px;width:36px;height:36px;border-radius:50%;background:rgba(30,37,53,0.9);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;">⚙️</button>
+<!-- ═══ MARKETS OVERLAY ═══ -->
+<div id="markets" class="markets">
+
+  <!-- Markets Header -->
+  <div class="mkt-hdr">
+    <button class="mkt-back" onclick="closeMarkets()">← Feed</button>
+    <div class="mkt-title">Tab<span>Markets</span></div>
+    <button class="mkt-add-btn" onclick="mOpenSheet()">+</button>
+  </div>
+
+  <!-- Sub tabs -->
+  <div class="mkt-sub-tabs">
+    <div class="mkt-sub-tab on" id="mkt-tab-watchlist" onclick="mSetTab('watchlist',this)">Watchlist</div>
+    <div class="mkt-sub-tab" id="mkt-tab-overview" onclick="mSetTab('overview',this)">Overview</div>
+    <div class="mkt-sub-tab" id="mkt-tab-forex" onclick="mSetTab('forex',this)">Forex</div>
+    <div class="mkt-sub-tab" id="mkt-tab-crypto" onclick="mSetTab('crypto',this)">Crypto</div>
+  </div>
+
+  <!-- Content area -->
+  <div class="mkt-content">
+
+    <!-- Watchlist -->
+    <div id="mkt-view-watchlist" class="mkt-view on">
+      <div id="mkt-watchlist-wrap" class="mkt-widget-wrap"></div>
+    </div>
+
+    <!-- Overview -->
+    <div id="mkt-view-overview" class="mkt-view">
+      <div id="mkt-overview-wrap" class="mkt-widget-wrap"></div>
+    </div>
+
+    <!-- Forex -->
+    <div id="mkt-view-forex" class="mkt-view">
+      <div id="mkt-forex-wrap" class="mkt-widget-wrap"></div>
+    </div>
+
+    <!-- Crypto -->
+    <div id="mkt-view-crypto" class="mkt-view">
+      <div id="mkt-crypto-wrap" class="mkt-widget-wrap"></div>
+    </div>
+
+  </div><!-- /mkt-content -->
+
+  <!-- Chart overlay (inside markets) -->
+  <div id="mkt-chart" class="mkt-chart">
+    <div class="mkt-chart-hdr">
+      <button class="mkt-back" onclick="mCloseChart()">← Back</button>
+      <div class="mkt-chart-info">
+        <div class="mkt-chart-sym" id="mkt-chart-sym">—</div>
+        <div class="mkt-chart-name" id="mkt-chart-name">—</div>
+      </div>
+    </div>
+    <div id="mkt-chart-wrap" class="mkt-widget-wrap"></div>
+  </div>
+
+  <!-- Add Symbol Sheet -->
+  <div id="mkt-sheet" class="mkt-sheet-overlay" onclick="mSheetOverlayClick(event)">
+    <div class="mkt-sheet">
+      <div class="mkt-sheet-handle"></div>
+      <div class="mkt-sheet-title">Add to Watchlist</div>
+      <input class="mkt-search" id="mkt-search" placeholder="Search symbol or name..." oninput="mFilterSymbols(this.value)" autocomplete="off">
+      <div class="mkt-cats" id="mkt-cats">
+        <div class="mkt-cat on" onclick="mSetCat('all',this)">All</div>
+        <div class="mkt-cat" onclick="mSetCat('india',this)">🇮🇳 India</div>
+        <div class="mkt-cat" onclick="mSetCat('us',this)">🇺🇸 US</div>
+        <div class="mkt-cat" onclick="mSetCat('indices',this)">📊 Indices</div>
+        <div class="mkt-cat" onclick="mSetCat('commodity',this)">🪙 Commodities</div>
+        <div class="mkt-cat" onclick="mSetCat('crypto',this)">₿ Crypto</div>
+        <div class="mkt-cat" onclick="mSetCat('forex',this)">💱 Forex</div>
+      </div>
+      <div class="mkt-sym-list" id="mkt-sym-list"></div>
+    </div>
+  </div>
+
+</div><!-- /markets -->
+
 </div><!-- /app -->
 </body>
 </html>
