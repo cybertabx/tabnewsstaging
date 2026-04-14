@@ -495,7 +495,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .mkt-cards-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
 .mkt-card-wrap{position:relative;height:130px;border-radius:12px;overflow:hidden;flex-shrink:0}
 .mkt-card-overlay{position:absolute;inset:0;z-index:2;cursor:pointer;background:transparent}
-.mkt-card-remove{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,0.55);border:0.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1}
+.mkt-card-remove{position:absolute;bottom:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,0.55);border:0.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1}
 .mkt-card-remove:active{background:rgba(220,50,50,0.7)}
 .mkt-card-wrap .tradingview-widget-container{height:100%;width:100%}
 .mkt-card-wrap .tradingview-widget-container__widget{height:100%;width:100%}
@@ -520,7 +520,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 /* Add Sheet */
 .mkt-sheet-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.65);z-index:10;display:none;align-items:flex-end}
 .mkt-sheet-overlay.on{display:flex}
-.mkt-sheet{width:100%;background:#0e1826;border-radius:20px 20px 0 0;padding:18px 18px 36px;max-height:82vh;display:flex;flex-direction:column;gap:12px}
+.mkt-sheet{width:100%;background:#0e1826;border-radius:20px 20px 0 0;padding:18px 18px 36px;max-height:82vh;display:flex;flex-direction:column;gap:12px;overflow:hidden}
 .mkt-sheet-handle{width:36px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin:0 auto 2px}
 .mkt-sheet-title{font-size:15px;font-weight:700;text-align:center}
 .mkt-search{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:11px 16px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
@@ -530,7 +530,7 @@ body{background:#030710;display:flex;justify-content:center;min-height:100vh;pad
 .mkt-cats::-webkit-scrollbar{display:none}
 .mkt-cat{flex-shrink:0;padding:6px 13px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);transition:all 0.15s}
 .mkt-cat.on{background:rgba(79,142,247,0.12);border-color:rgba(79,142,247,0.35);color:var(--blue)}
-.mkt-sym-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:1px}
+.mkt-sym-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:1px;min-height:0}
 .mkt-sym-item{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;border-radius:10px;cursor:pointer;transition:background 0.15s}
 .mkt-sym-item:active{background:rgba(255,255,255,0.05)}
 .mkt-sym-left{display:flex;flex-direction:column;gap:2px}
@@ -6179,43 +6179,89 @@ function showMinimalBridge(url) {
 
 // Symbol database
 var M_SYMBOLS = [
-  // India Stocks
-  {ticker:'NSE:RELIANCE',name:'Reliance Industries',cat:'india'},
-  {ticker:'NSE:TCS',name:'Tata Consultancy Services',cat:'india'},
-  {ticker:'NSE:INFY',name:'Infosys',cat:'india'},
-  {ticker:'NSE:HDFCBANK',name:'HDFC Bank',cat:'india'},
-  {ticker:'NSE:ICICIBANK',name:'ICICI Bank',cat:'india'},
-  {ticker:'NSE:HINDUNILVR',name:'Hindustan Unilever',cat:'india'},
-  {ticker:'NSE:ITC',name:'ITC Limited',cat:'india'},
-  {ticker:'NSE:BAJFINANCE',name:'Bajaj Finance',cat:'india'},
-  {ticker:'NSE:SBIN',name:'State Bank of India',cat:'india'},
-  {ticker:'NSE:BHARTIARTL',name:'Bharti Airtel',cat:'india'},
-  {ticker:'NSE:WIPRO',name:'Wipro',cat:'india'},
-  {ticker:'NSE:HCLTECH',name:'HCL Technologies',cat:'india'},
-  {ticker:'NSE:ASIANPAINT',name:'Asian Paints',cat:'india'},
-  {ticker:'NSE:MARUTI',name:'Maruti Suzuki',cat:'india'},
-  {ticker:'NSE:TATAMOTORS',name:'Tata Motors',cat:'india'},
-  {ticker:'NSE:ADANIENT',name:'Adani Enterprises',cat:'india'},
-  {ticker:'NSE:KOTAKBANK',name:'Kotak Mahindra Bank',cat:'india'},
-  {ticker:'NSE:LT',name:'Larsen and Toubro',cat:'india'},
-  {ticker:'NSE:AXISBANK',name:'Axis Bank',cat:'india'},
-  {ticker:'NSE:SUNPHARMA',name:'Sun Pharma',cat:'india'},
-  {ticker:'NSE:ULTRACEMCO',name:'UltraTech Cement',cat:'india'},
-  {ticker:'NSE:TITAN',name:'Titan Company',cat:'india'},
-  {ticker:'NSE:BAJAJFINSV',name:'Bajaj Finserv',cat:'india'},
-  {ticker:'NSE:POWERGRID',name:'Power Grid Corp',cat:'india'},
-  {ticker:'NSE:NTPC',name:'NTPC',cat:'india'},
-  {ticker:'NSE:ONGC',name:'ONGC',cat:'india'},
-  {ticker:'NSE:DRREDDY',name:'Dr Reddys Labs',cat:'india'},
-  {ticker:'NSE:CIPLA',name:'Cipla',cat:'india'},
-  {ticker:'NSE:JSWSTEEL',name:'JSW Steel',cat:'india'},
-  {ticker:'NSE:NESTLEIND',name:'Nestle India',cat:'india'},
-  {ticker:'NSE:TECHM',name:'Tech Mahindra',cat:'india'},
-  {ticker:'NSE:COALINDIA',name:'Coal India',cat:'india'},
-  {ticker:'NSE:TATASTEEL',name:'Tata Steel',cat:'india'},
-  {ticker:'NSE:ZOMATO',name:'Zomato',cat:'india'},
-  {ticker:'NSE:APOLLOHOSP',name:'Apollo Hospitals',cat:'india'},
-  // US Stocks
+  // ── India Stocks (BSE) ──
+  {ticker:'BSE:500325',name:'Reliance Industries',cat:'india'},
+  {ticker:'BSE:532540',name:'Tata Consultancy Services',cat:'india'},
+  {ticker:'BSE:500180',name:'HDFC Bank',cat:'india'},
+  {ticker:'BSE:532174',name:'ICICI Bank',cat:'india'},
+  {ticker:'BSE:500696',name:'Hindustan Unilever',cat:'india'},
+  {ticker:'BSE:500209',name:'Infosys',cat:'india'},
+  {ticker:'BSE:500875',name:'ITC',cat:'india'},
+  {ticker:'BSE:500112',name:'State Bank of India',cat:'india'},
+  {ticker:'BSE:532454',name:'Bharti Airtel',cat:'india'},
+  {ticker:'BSE:500247',name:'Kotak Mahindra Bank',cat:'india'},
+  {ticker:'BSE:500510',name:'Larsen and Toubro',cat:'india'},
+  {ticker:'BSE:532215',name:'Axis Bank',cat:'india'},
+  {ticker:'BSE:500520',name:'Mahindra and Mahindra',cat:'india'},
+  {ticker:'BSE:532500',name:'Maruti Suzuki',cat:'india'},
+  {ticker:'BSE:500470',name:'Tata Steel',cat:'india'},
+  {ticker:'BSE:507685',name:'Wipro',cat:'india'},
+  {ticker:'BSE:500570',name:'Tata Motors',cat:'india'},
+  {ticker:'BSE:524715',name:'Sun Pharmaceutical',cat:'india'},
+  {ticker:'BSE:500182',name:'Hindalco Industries',cat:'india'},
+  {ticker:'BSE:532977',name:'Bajaj Auto',cat:'india'},
+  {ticker:'BSE:500312',name:'ONGC',cat:'india'},
+  {ticker:'BSE:532555',name:'NTPC',cat:'india'},
+  {ticker:'BSE:500034',name:'Bajaj Finance',cat:'india'},
+  {ticker:'BSE:532538',name:'UltraTech Cement',cat:'india'},
+  {ticker:'BSE:500820',name:'Asian Paints',cat:'india'},
+  {ticker:'BSE:532532',name:'Bajaj Finserv',cat:'india'},
+  {ticker:'BSE:500124',name:'Dr Reddys Laboratories',cat:'india'},
+  {ticker:'BSE:532659',name:'Cipla',cat:'india'},
+  {ticker:'BSE:517334',name:'Tech Mahindra',cat:'india'},
+  {ticker:'BSE:533278',name:'Coal India',cat:'india'},
+  {ticker:'BSE:500228',name:'JSW Steel',cat:'india'},
+  {ticker:'BSE:533228',name:'Adani Ports',cat:'india'},
+  {ticker:'BSE:541450',name:'Adani Green Energy',cat:'india'},
+  {ticker:'BSE:512599',name:'Adani Enterprises',cat:'india'},
+  {ticker:'BSE:500111',name:'Punjab National Bank',cat:'india'},
+  {ticker:'BSE:532461',name:'IndusInd Bank',cat:'india'},
+  {ticker:'BSE:532712',name:'Yes Bank',cat:'india'},
+  {ticker:'BSE:543526',name:'Life Insurance Corporation LIC',cat:'india'},
+  {ticker:'BSE:540611',name:'SBI Life Insurance',cat:'india'},
+  {ticker:'BSE:541153',name:'HDFC Life Insurance',cat:'india'},
+  {ticker:'BSE:534091',name:'Muthoot Finance',cat:'india'},
+  {ticker:'BSE:511243',name:'Shriram Finance',cat:'india'},
+  {ticker:'BSE:543750',name:'Paytm One97 Communications',cat:'india'},
+  {ticker:'BSE:532134',name:'Bank of Baroda',cat:'india'},
+  {ticker:'BSE:532388',name:'Canara Bank',cat:'india'},
+  {ticker:'BSE:532149',name:'Apollo Hospitals',cat:'india'},
+  {ticker:'BSE:532281',name:'HCL Technologies',cat:'india'},
+  {ticker:'BSE:543994',name:'Dixon Technologies',cat:'india'},
+  {ticker:'BSE:543257',name:'Zomato',cat:'india'},
+  {ticker:'BSE:543396',name:'Nykaa FSN ECommerce',cat:'india'},
+  {ticker:'BSE:500295',name:'Lupin',cat:'india'},
+  {ticker:'BSE:524804',name:'Aurobindo Pharma',cat:'india'},
+  {ticker:'BSE:532488',name:'Divis Laboratories',cat:'india'},
+  {ticker:'BSE:500484',name:'Titan Company',cat:'india'},
+  {ticker:'BSE:500490',name:'Nestle India',cat:'india'},
+  {ticker:'BSE:500096',name:'Dabur India',cat:'india'},
+  {ticker:'BSE:500150',name:'Colgate Palmolive India',cat:'india'},
+  {ticker:'BSE:500144',name:'Marico',cat:'india'},
+  {ticker:'BSE:517354',name:'Havells India',cat:'india'},
+  {ticker:'BSE:543271',name:'Trent',cat:'india'},
+  {ticker:'BSE:533155',name:'Jubilant FoodWorks',cat:'india'},
+  {ticker:'BSE:500400',name:'Tata Power',cat:'india'},
+  {ticker:'BSE:500188',name:'Hindustan Petroleum HPCL',cat:'india'},
+  {ticker:'BSE:500547',name:'Bharat Petroleum BPCL',cat:'india'},
+  {ticker:'BSE:500390',name:'Indian Oil Corporation',cat:'india'},
+  {ticker:'BSE:532868',name:'DLF',cat:'india'},
+  {ticker:'BSE:540180',name:'Avenue Supermarts DMart',cat:'india'},
+  {ticker:'BSE:500252',name:'Hero MotoCorp',cat:'india'},
+  {ticker:'BSE:500086',name:'Eicher Motors',cat:'india'},
+  {ticker:'BSE:500260',name:'Grasim Industries',cat:'india'},
+  {ticker:'BSE:500387',name:'ACC Cement',cat:'india'},
+  {ticker:'BSE:532642',name:'Ambuja Cements',cat:'india'},
+  {ticker:'BSE:543045',name:'Angel One',cat:'india'},
+  {ticker:'BSE:543217',name:'IRCTC Indian Railway Catering',cat:'india'},
+  {ticker:'BSE:500676',name:'Siemens India',cat:'india'},
+  {ticker:'BSE:506395',name:'ABB India',cat:'india'},
+  {ticker:'BSE:533160',name:'PFC Power Finance Corp',cat:'india'},
+  {ticker:'BSE:532955',name:'REC Limited',cat:'india'},
+  {ticker:'BSE:543545',name:'Adani Total Gas',cat:'india'},
+  {ticker:'BSE:500039',name:'Mahindra Finance',cat:'india'},
+  {ticker:'BSE:500003',name:'HDFC Asset Management',cat:'india'},
+  // ── US Stocks ──
   {ticker:'NASDAQ:AAPL',name:'Apple Inc',cat:'us'},
   {ticker:'NASDAQ:MSFT',name:'Microsoft',cat:'us'},
   {ticker:'NASDAQ:GOOGL',name:'Alphabet Google',cat:'us'},
@@ -6238,36 +6284,69 @@ var M_SYMBOLS = [
   {ticker:'NYSE:DIS',name:'Walt Disney',cat:'us'},
   {ticker:'NYSE:GS',name:'Goldman Sachs',cat:'us'},
   {ticker:'NYSE:IBM',name:'IBM',cat:'us'},
-  // Indices
-  {ticker:'NSE:NIFTY',name:'NIFTY 50',cat:'indices'},
+  {ticker:'NYSE:PFE',name:'Pfizer',cat:'us'},
+  {ticker:'NYSE:CVX',name:'Chevron',cat:'us'},
+  {ticker:'NASDAQ:COST',name:'Costco',cat:'us'},
+  {ticker:'NYSE:UNH',name:'UnitedHealth Group',cat:'us'},
+  {ticker:'NASDAQ:AVGO',name:'Broadcom',cat:'us'},
+  {ticker:'NYSE:HD',name:'Home Depot',cat:'us'},
+  {ticker:'NASDAQ:QCOM',name:'Qualcomm',cat:'us'},
+  {ticker:'NYSE:RTX',name:'Raytheon Technologies',cat:'us'},
+  {ticker:'NYSE:LMT',name:'Lockheed Martin',cat:'us'},
+  {ticker:'NASDAQ:ADBE',name:'Adobe',cat:'us'},
+  {ticker:'NASDAQ:CRM',name:'Salesforce',cat:'us'},
+  {ticker:'NYSE:T',name:'AT&T',cat:'us'},
+  {ticker:'NYSE:VZ',name:'Verizon',cat:'us'},
+  // ── Indices ──
   {ticker:'BSE:SENSEX',name:'BSE SENSEX',cat:'indices'},
-  {ticker:'FOREXCOM:SPXUSD',name:'S&P 500',cat:'indices'},
-  {ticker:'FOREXCOM:NSXUSD',name:'Nasdaq 100',cat:'indices'},
-  {ticker:'FOREXCOM:DJI',name:'Dow Jones',cat:'indices'},
-  {ticker:'INDEX:FTSE',name:'FTSE 100',cat:'indices'},
-  {ticker:'XETR:DAX',name:'DAX',cat:'indices'},
+  {ticker:'BSE:BANKEX',name:'BSE BANKEX',cat:'indices'},
+  {ticker:'CAPITALCOM:US500',name:'S&P 500',cat:'indices'},
+  {ticker:'CAPITALCOM:US100',name:'Nasdaq 100',cat:'indices'},
+  {ticker:'CAPITALCOM:US30',name:'Dow Jones',cat:'indices'},
+  {ticker:'CAPITALCOM:UK100',name:'FTSE 100',cat:'indices'},
+  {ticker:'XETR:DAX',name:'DAX Germany',cat:'indices'},
   {ticker:'INDEX:NI225',name:'Nikkei 225',cat:'indices'},
   {ticker:'INDEX:HSI',name:'Hang Seng',cat:'indices'},
-  // Commodities
+  {ticker:'CAPITALCOM:HK50',name:'Hang Seng 50',cat:'indices'},
+  {ticker:'CAPITALCOM:JP225',name:'Japan 225',cat:'indices'},
+  {ticker:'CAPITALCOM:AUS200',name:'ASX 200 Australia',cat:'indices'},
+  {ticker:'CAPITALCOM:DE40',name:'DAX 40 Germany',cat:'indices'},
+  {ticker:'CAPITALCOM:EU50',name:'Euro Stoxx 50',cat:'indices'},
+  // ── Commodities (TVC format — reliable in free widgets) ──
   {ticker:'TVC:GOLD',name:'Gold',cat:'commodity'},
   {ticker:'TVC:SILVER',name:'Silver',cat:'commodity'},
   {ticker:'TVC:USOIL',name:'Crude Oil WTI',cat:'commodity'},
   {ticker:'TVC:UKOIL',name:'Brent Crude',cat:'commodity'},
-  {ticker:'NYMEX:NG1!',name:'Natural Gas',cat:'commodity'},
   {ticker:'TVC:PLATINUM',name:'Platinum',cat:'commodity'},
   {ticker:'TVC:COPPER',name:'Copper',cat:'commodity'},
-  // Crypto
-  {ticker:'BITSTAMP:BTCUSD',name:'Bitcoin',cat:'crypto'},
-  {ticker:'BITSTAMP:ETHUSD',name:'Ethereum',cat:'crypto'},
-  {ticker:'BINANCE:SOLUSDT',name:'Solana',cat:'crypto'},
+  {ticker:'TVC:NATURALGAS',name:'Natural Gas',cat:'commodity'},
+  {ticker:'TVC:WHEAT',name:'Wheat',cat:'commodity'},
+  {ticker:'TVC:CORN',name:'Corn',cat:'commodity'},
+  {ticker:'TVC:SUGAR',name:'Sugar',cat:'commodity'},
+  // ── Crypto ──
+  {ticker:'BITSTAMP:BTCUSD',name:'Bitcoin BTC',cat:'crypto'},
+  {ticker:'BITSTAMP:ETHUSD',name:'Ethereum ETH',cat:'crypto'},
+  {ticker:'BINANCE:SOLUSDT',name:'Solana SOL',cat:'crypto'},
   {ticker:'BINANCE:BNBUSDT',name:'BNB',cat:'crypto'},
-  {ticker:'BINANCE:XRPUSDT',name:'XRP',cat:'crypto'},
-  {ticker:'BINANCE:ADAUSDT',name:'Cardano',cat:'crypto'},
-  {ticker:'BINANCE:DOGEUSDT',name:'Dogecoin',cat:'crypto'},
-  {ticker:'BINANCE:AVAXUSDT',name:'Avalanche',cat:'crypto'},
-  {ticker:'BINANCE:LINKUSDT',name:'Chainlink',cat:'crypto'},
-  {ticker:'BINANCE:LTCUSDT',name:'Litecoin',cat:'crypto'},
-  // Forex
+  {ticker:'BINANCE:XRPUSDT',name:'XRP Ripple',cat:'crypto'},
+  {ticker:'BINANCE:ADAUSDT',name:'Cardano ADA',cat:'crypto'},
+  {ticker:'BINANCE:DOGEUSDT',name:'Dogecoin DOGE',cat:'crypto'},
+  {ticker:'BINANCE:AVAXUSDT',name:'Avalanche AVAX',cat:'crypto'},
+  {ticker:'BINANCE:LINKUSDT',name:'Chainlink LINK',cat:'crypto'},
+  {ticker:'BINANCE:LTCUSDT',name:'Litecoin LTC',cat:'crypto'},
+  {ticker:'BINANCE:DOTUSDT',name:'Polkadot DOT',cat:'crypto'},
+  {ticker:'BINANCE:MATICUSDT',name:'Polygon MATIC',cat:'crypto'},
+  {ticker:'BINANCE:UNIUSDT',name:'Uniswap UNI',cat:'crypto'},
+  {ticker:'BINANCE:ATOMUSDT',name:'Cosmos ATOM',cat:'crypto'},
+  {ticker:'BINANCE:APTUSDT',name:'Aptos APT',cat:'crypto'},
+  {ticker:'BINANCE:ARBUSDT',name:'Arbitrum ARB',cat:'crypto'},
+  {ticker:'BINANCE:SUIUSDT',name:'Sui SUI',cat:'crypto'},
+  {ticker:'BINANCE:INJUSDT',name:'Injective INJ',cat:'crypto'},
+  {ticker:'BINANCE:OPUSDT',name:'Optimism OP',cat:'crypto'},
+  {ticker:'BINANCE:NEARUSDT',name:'NEAR Protocol',cat:'crypto'},
+  {ticker:'BINANCE:FTMUSDT',name:'Fantom FTM',cat:'crypto'},
+  {ticker:'BINANCE:LDOUSDT',name:'Lido DAO LDO',cat:'crypto'},
+  // ── Forex ──
   {ticker:'FX:USDINR',name:'USD / Indian Rupee',cat:'forex'},
   {ticker:'FX:USDAED',name:'USD / UAE Dirham',cat:'forex'},
   {ticker:'FX:USDPKR',name:'USD / Pakistani Rupee',cat:'forex'},
@@ -6280,6 +6359,9 @@ var M_SYMBOLS = [
   {ticker:'FX:EURINR',name:'Euro / Indian Rupee',cat:'forex'},
   {ticker:'FX:GBPINR',name:'British Pound / Indian Rupee',cat:'forex'},
   {ticker:'FX:USDCNY',name:'USD / Chinese Yuan',cat:'forex'},
+  {ticker:'FX:USDCHF',name:'USD / Swiss Franc',cat:'forex'},
+  {ticker:'FX:EURGBP',name:'Euro / British Pound',cat:'forex'},
+  {ticker:'FX:USDHKD',name:'USD / Hong Kong Dollar',cat:'forex'},
 ];
 
 var M_DEFAULT = []; // Empty on first launch — user builds their own watchlist
@@ -6360,7 +6442,7 @@ function mSetTab(tab, el) {
   // Show + button on watchlist and overview tabs
   var addBtn = document.getElementById('mkt-add-btn');
   var counter = document.getElementById('mkt-counter');
-  var showAdd = tab === 'watchlist' || tab === 'overview';
+  var showAdd = tab === 'watchlist' || tab === 'overview' || tab === 'crypto';
   if(addBtn) addBtn.style.display = showAdd ? 'flex' : 'none';
   if(counter) counter.style.display = tab === 'watchlist' ? 'block' : 'none';
   // Lazy init
@@ -6384,18 +6466,20 @@ function mInitTab(tab) {
       symbolActiveColor:'rgba(79,142,247,0.1)',
       tabs:[
         {title:'Indices',symbols:[
-          {s:'NSE:NIFTY',d:'NIFTY 50'},{s:'BSE:SENSEX',d:'SENSEX'},
-          {s:'FOREXCOM:SPXUSD',d:'S&P 500'},{s:'FOREXCOM:NSXUSD',d:'Nasdaq'},
-          {s:'FOREXCOM:DJI',d:'Dow Jones'},{s:'INDEX:FTSE',d:'FTSE 100'}
+          {s:'BSE:SENSEX',d:'SENSEX'},{s:'BSE:BANKEX',d:'BSE Bankex'},
+          {s:'CAPITALCOM:US500',d:'S&P 500'},{s:'CAPITALCOM:US100',d:'Nasdaq 100'},
+          {s:'CAPITALCOM:US30',d:'Dow Jones'},{s:'CAPITALCOM:UK100',d:'FTSE 100'},
+          {s:'XETR:DAX',d:'DAX Germany'},{s:'INDEX:NI225',d:'Nikkei 225'}
         ],originalTitle:'Indices'},
         {title:'Commodities',symbols:[
-          {s:'TVC:GOLD',d:'Gold'},{s:'TVC:USOIL',d:'Crude Oil WTI'},
-          {s:'TVC:SILVER',d:'Silver'},{s:'TVC:UKOIL',d:'Brent Crude'},
-          {s:'NYMEX:NG1!',d:'Natural Gas'}
+          {s:'TVC:GOLD',d:'Gold'},{s:'TVC:SILVER',d:'Silver'},
+          {s:'TVC:USOIL',d:'Crude Oil WTI'},{s:'TVC:UKOIL',d:'Brent Crude'},
+          {s:'TVC:NATURALGAS',d:'Natural Gas'},{s:'TVC:COPPER',d:'Copper'}
         ],originalTitle:'Commodities'},
         {title:'Forex',symbols:[
-          {s:'FX:USDINR',d:'USD/INR'},{s:'FX:USDAED',d:'USD/AED'},
-          {s:'FX:EURUSD',d:'EUR/USD'},{s:'FX:GBPUSD',d:'GBP/USD'}
+          {s:'FX:USDINR',d:'USD/INR'},{s:'OANDA:USDAED_CFD',d:'USD/AED'},
+          {s:'FX:EURUSD',d:'EUR/USD'},{s:'FX:GBPUSD',d:'GBP/USD'},
+          {s:'FX:USDJPY',d:'USD/JPY'},{s:'FX:USDSGD',d:'USD/SGD'}
         ],originalTitle:'Forex'},
         {title:'Crypto',symbols:[
           {s:'BITSTAMP:BTCUSD',d:'Bitcoin'},{s:'BITSTAMP:ETHUSD',d:'Ethereum'},
@@ -6410,7 +6494,7 @@ function mInitTab(tab) {
       title:'Forex',
       symbols:[
         {name:'FX:USDINR',displayName:'USD / INR'},
-        {name:'FX:USDAED',displayName:'USD / AED'},
+        {name:'OANDA:USDAED_CFD',displayName:'USD / AED'},
         {name:'FX:USDPKR',displayName:'USD / PKR'},
         {name:'FX:EURUSD',displayName:'EUR / USD'},
         {name:'FX:GBPUSD',displayName:'GBP / USD'},
