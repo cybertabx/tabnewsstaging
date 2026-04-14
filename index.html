@@ -6332,10 +6332,11 @@ function mSetTab(tab, el) {
   el.classList.add('on');
   document.querySelectorAll('.mkt-view').forEach(function(v){ v.classList.remove('on'); });
   document.getElementById('mkt-view-'+tab).classList.add('on');
-  // Show + button and counter only on watchlist tab
+  // Show + button on watchlist and overview tabs
   var addBtn = document.getElementById('mkt-add-btn');
   var counter = document.getElementById('mkt-counter');
-  if(addBtn) addBtn.style.display = tab === 'watchlist' ? 'flex' : 'none';
+  var showAdd = tab === 'watchlist' || tab === 'overview';
+  if(addBtn) addBtn.style.display = showAdd ? 'flex' : 'none';
   if(counter) counter.style.display = tab === 'watchlist' ? 'block' : 'none';
   // Lazy init
   if(!mInited[tab]) {
@@ -6425,7 +6426,7 @@ function mCreateWidget(wrapperId, scriptSrc, config) {
   container.appendChild(attr);
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = scriptSrc;
+  script.src = scriptSrc + '?t=' + Date.now();  // cache-bust to force re-execution
   script.async = true;
   script.innerHTML = JSON.stringify(config);
   container.appendChild(script);
@@ -6438,13 +6439,24 @@ function mUpdateCounter() {
   if(el) el.textContent = mWatchlist.length + '/12';
 }
 
+var mWatchlistRenderCount = 0;
 function mRenderWatchlist() {
   mUpdateCounter();
+  var outer = document.getElementById('mkt-watchlist-outer');
+  // Option D: fresh child div with unique ID — TradingView never sees duplicate
+  mWatchlistRenderCount++;
+  var newId = 'mkt-wl-' + mWatchlistRenderCount;
+  var fresh = document.createElement('div');
+  fresh.id = newId;
+  fresh.style.cssText = 'height:100%;width:100%';
+  outer.innerHTML = '';
+  outer.appendChild(fresh);
+
   if(!mWatchlist.length) {
-    document.getElementById('mkt-watchlist-wrap').innerHTML = '<div class="mkt-empty"><div class="mkt-empty-icon">📊</div><div class="mkt-empty-title">Your watchlist is empty</div><div class="mkt-empty-sub">Tap + to add stocks, indices,<br>crypto or forex</div></div>';
+    fresh.innerHTML = '<div class="mkt-empty"><div class="mkt-empty-icon">📊</div><div class="mkt-empty-title">Your watchlist is empty</div><div class="mkt-empty-sub">Tap + to add stocks, indices,<br>crypto or forex</div></div>';
     return;
   }
-  mCreateWidget('mkt-watchlist-wrap', 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js', {
+  mCreateWidget(newId, 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js', {
     title:'My Watchlist',
     symbols: mWatchlist.map(function(w){ return {name:w.ticker, displayName:w.name}; }),
     colorTheme:'dark', isTransparent:false, locale:'en', width:'100%', height:'100%'
@@ -6577,7 +6589,7 @@ function mToggleAddById(e, btn) {
 
     <!-- Watchlist -->
     <div id="mkt-view-watchlist" class="mkt-view on">
-      <div id="mkt-watchlist-wrap" class="mkt-widget-wrap"></div>
+      <div id="mkt-watchlist-outer" class="mkt-widget-wrap"><div id="mkt-watchlist-wrap"></div></div>
     </div>
 
     <!-- Overview -->
